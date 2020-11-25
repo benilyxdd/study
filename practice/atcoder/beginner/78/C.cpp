@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+
+ll power(int a, int times) {
+	ll ans = 1;
+	for (int i = 0; i < times; i++) {
+		ans *= a;
+	}
+	return ans;
+}
+
+void solve() {
+	int a, b;
+	cin >> a >> b;
+	int ans = 1900*b+100*(a-b);
+	cout << ans*power(2, b) << "\n";
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int t = 1, i = 1;
+	//cin >> t;
+	while(t--) {
+		//cout << "Case #" << i << ": ";
+		solve();
+		//i++;
+	}
+	return 0;
+}
+

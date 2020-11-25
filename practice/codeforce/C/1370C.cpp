@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+void solve() {
+	int n; cin >> n;
+	while (n != 1) {
+		for (int i = 1; i*i <= n; i++) {
+			if (n%i == 0) {
+				int x = i;
+				int y = n/i;
+				if (y&1) {
+					n=n/y;
+				}
+			}
+		}
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int t = 1, i = 1;
+	cin >> t;
+	while(t--) {
+		//cout << "Case #" << i << ": ";
+		solve();
+		//i++;
+	}
+	return 0;
+}
+

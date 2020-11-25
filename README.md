@@ -1,2 +1,0 @@
-# cp
-just cp things

@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+
+void solve() {
+	string a;
+	cin >> a;
+	int x = 0;
+	auto cnt = count(a.begin(), a.end(), 'a');
+	int other = a.length() - (int)cnt;
+	if(cnt > other) {
+		cout << 0 << "\n";
+	} else {
+		cout << other - cnt;
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int t = 1, i = 1;
+	//cin >> t;
+	while(t--) {
+		//cout << "Case #" << i < ": ";
+		solve();
+		//i++;
+	}
+	return 0;
+}

@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+
+const int N = (int)1e9+9;
+bool dp[N];
+
+void solve() {
+	int a, b, c, d, e;
+	cin >> a >> b >> c;
+	vector<int> v;
+	memset(dp, false, sizeof(dp));
+	for (int i = 0; i < a; i++) {
+		cin >> d;
+		dp[d] = true;
+		for (int j = 1; j < b; j++) {
+			if (dp[d-j] == 1) {
+				memset(dp-j+1, true, 4*j);
+			}
+			if (dp[d+j] == 1) {
+				memset(dp+j-1, true, 4*j);
+			}
+		}
+		v.push_back(d);
+	}
+	while(c--) {
+		cin >> d >> e;
+		cout << (dp[v[d-1]]&&dp[v[e-1]] ? "Yes" : "No") << "\n";
+	}
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int t = 1, i = 1;
+	//cin >> t;
+	while(t--) {
+		//cout << "Case #" << i << ": ";
+		solve();
+		//i++;
+	}
+	return 0;
+}
+

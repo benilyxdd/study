@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+
+void solve() {
+	int a, b, c , d;
+	cin >> a >> b >> c >> d;
+	int mx = max(abs(0-c), a-1-c);
+	int mx2 = max(abs(0-d), b-1-d);
+	int ans = max(mx * b, mx2 *a);
+	cout << ans << "\n";
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int t = 1, i = 1;
+	cin >> t;
+	while(t--) {
+		//cout << "Case #" << i < ": ";
+		solve();
+		//i++;
+	}
+	return 0;
+}

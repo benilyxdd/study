@@ -4,25 +4,25 @@ using namespace std;
 #define ll long long
 const int mxN = (int)2e5+5;
 vector<array<int, 2>> ar;
-int a, b, n, mx, temp;
+int a, b, n;
 
 void solve() {
 	cin >> n;
 	while(n--) {
 		cin >> a >> b;
-		ar.push_back({a, 1});
-		ar.push_back({b, 2});
+		ar.push_back({b, a});
 	}
 	sort(ar.begin(), ar.end());
-	for (array<int, 2>& x : ar) {
-		if (x[1] == 1) {
-			temp++;
-			mx = max(mx, temp);
-		} else {
-			temp--;
+
+	int ans = 1;
+	int now = ar[0][0];
+	for (array<int, 2> x : ar) {
+		if (x[1] >= now) {
+			ans++;
+			now = x[0];
 		}
 	}
-	cout << mx << "\n";
+	cout << ans << "\n";
 }
 
 int main() {

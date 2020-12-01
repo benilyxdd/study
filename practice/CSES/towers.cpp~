@@ -2,19 +2,21 @@
 using namespace std;
 
 #define ll long long
+const int mxN = (int)2e5+5;
+int ar[mxN], n;
 
 void solve() {
-	int n;
 	cin >> n;
-	int a[n];
-	for (int i = 0; i < n; i++)
-		cin >> a[i];
+	for (int i = 0; i < n; i++) 
+		cin >> ar[i];
+
 	vector<int> v;
 	for (int i = 0; i < n; i++) {
-		auto x = max_element(v.begin(), v.end());
-		if (*x < a[i]) 
-			v.push_back(a[i]);
-		*x = a[i];
+		int x = upper_bound(v.begin(), v.end(), ar[i])-v.begin();
+		if (x < v.size())
+			v[x] = ar[i];
+		else
+			v.push_back(ar[i]);
 	}
 	cout << v.size() << "\n";
 }

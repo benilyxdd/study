@@ -2,23 +2,20 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)2e5+5;
-int ar[mxN], n;
 
 void solve() {
+	int a, n;
 	cin >> n;
-	for (int i = 0; i < n; i++) 
-		cin >> ar[i];
-
-	vector<int> v;
+	int ans = 0;
 	for (int i = 0; i < n; i++) {
-		int x = upper_bound(v.begin(), v.end(), ar[i])-v.begin();
-		if (x < v.size())
-			v[x] = ar[i];
-		else
-			v.push_back(ar[i]);
+		int mx = 0;
+		for (int j = -1; j < i; j++) {
+			cin >> a;
+			mx = max(a, mx);
+		}
+		ans += mx;
 	}
-	cout << v.size() << "\n";
+	cout << ans-1 << "\n";
 }
 
 int main() {
@@ -26,7 +23,7 @@ int main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	//cin >> t;
+	cin >> t;
 	while(t--) {
 		//cout << "Case #" << i << ": ";
 		solve();

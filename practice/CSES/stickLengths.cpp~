@@ -3,26 +3,21 @@ using namespace std;
 
 #define ll long long
 const int mxN = (int)2e5+5;
-vector<array<int, 2>> ar;
-int a, b, n, mx, temp;
+int ar[mxN];
+int n;
 
 void solve() {
 	cin >> n;
-	while(n--) {
-		cin >> a >> b;
-		ar.push_back({a, 1});
-		ar.push_back({b, 2});
-	}
-	sort(ar.begin(), ar.end());
-	for (array<int, 2>& x : ar) {
-		if (x[1] == 1) {
-			temp++;
-			mx = max(mx, temp);
-		} else {
-			temp--;
-		}
-	}
-	cout << mx << "\n";
+	for (int i = 0; i < n; i++) 
+		cin >> ar[i];
+	sort(ar, ar+n);
+	
+	ll ans = 0;
+	ll xd = ar[n/2];
+	for (int i = 0; i < n; i++) 
+		ans += abs(xd-ar[i]);
+	
+	cout << ans << "\n";
 }
 
 int main() {

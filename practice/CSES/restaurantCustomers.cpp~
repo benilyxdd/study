@@ -2,9 +2,27 @@
 using namespace std;
 
 #define ll long long
+const int mxN = (int)2e5+5;
+vector<array<int, 2>> ar;
+int a, b, n, mx, temp;
 
 void solve() {
-
+	cin >> n;
+	while(n--) {
+		cin >> a >> b;
+		ar.push_back({a, 1});
+		ar.push_back({b, 2});
+	}
+	sort(ar.begin(), ar.end());
+	for (array<int, 2>& x : ar) {
+		if (x[1] == 1) {
+			temp++;
+			mx = max(mx, temp);
+		} else {
+			temp--;
+		}
+	}
+	cout << mx << "\n";
 }
 
 int main() {

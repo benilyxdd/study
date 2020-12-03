@@ -2,19 +2,13 @@
 using namespace std;
 
 #define ll long long
-const int mxN = 101;
-int n, k, a[mxN];
+int n, a, b;
+string s;
 
 void solve() {
-	cin >> n >> k;
-	for (int i = 0; i < n; i++) {
-		int x;
-		cin >> x;
-		a[x]++;
-	}
-
-
-	
+	cin >> n >> a >> b >> s;
+	a--, b--;
+	cout << ((s[a]-'0')^(s[b]-'0'));
 }
 
 int main() {

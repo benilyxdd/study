@@ -2,9 +2,28 @@
 using namespace std;
 
 #define ll long long
+const int mxN = 201, mxM = 2001;
+int n, m, p1, p2, tf;
+vector<array<int, 2>> tie, ntie;
+bool 
+
+bool cycle() {
+
+}
 
 void solve() {
+	//input
+	cin >> n >> m;
+	for (int i = 0; i < m; i++) {
+		cin >> p1 >> p2 >> tf;
+		if (tf)
+			tie.push_back({p1, p2});
+		else
+			ntie.push_back({p1, p2});
+	}
 
+
+	
 }
 
 int main() {

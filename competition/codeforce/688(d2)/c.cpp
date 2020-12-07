@@ -2,74 +2,44 @@
 using namespace std;
 
 #define ll long long
-const int mxN = 2001;
-int n, tf[10], cnt[10];
-bool rc[10];
-array<int, 2> tf2[10];
-string a[mxN];
+const int MAX = (int)1e9+7;
+const int mxN = 2005;
+string ar[mxN];
+int n, mxr[10], mxc[10], mnr[10], mnc[10], ans[10];
 
 void solve() {
-	memset(tf, 0, sizeof(tf));
-	memset(rc, -1, sizeof(rc));
-	memset(tf2, 0, sizeof(tf2));
+	memset(mxr, 0, sizeof(mxr));
+	memset(mxc, 0, sizeof(mxc));
+	memset(ans, 0, sizeof(ans));
+	fill(mnr, mnr+10, MAX);
+	fill(mnc, mnc+10, MAX);
 	cin >> n;
+	for (int i = 0; i < n; i++) 
+		cin >> ar[i];
+
 	for (int i = 0; i < n; i++) {
-		cin >> a[i];
 		for (int j = 0; j < n; j++) {
-			int tar = a[i][j]-'0';
-			cnt[tar]++;
-
-			int col = max(j, n-j-1);
-			int row = max(i, n-i-1);
-
-			if (col > tf[tar] && tf2[tar][0] != j) {
-				tf[tar] = col;
-				rc[tar] = false;
-				tf2[tar][0] = i;;
-				tf2[tar][1] = j;
-			}
-			
-			if (row > tf[tar] && tf2[tar][1] != i) {
-				tf[tar] = row;
-				rc[tar] = true;
-				tf2[tar][0] = i;
-				tf2[tar][1] = j;
-			}
+			int x = ar[i][j]-'0';
+			mxr[x] = max(mxr[x], i);
+			mxc[x] = max(mxc[x], j);
+			mnr[x] = min(mnr[x], i);
+			mnc[x] = min(mnc[x], j);
 		}
 	}
 
-	for (int i = 0; i < 10; i++) {
-		if (tf[i] == 0) {
-			cout << "0 ";
-		} else if (cnt[i] == 2) {
-			cout << "XD ";			
-		} else {
-			if (rc[i]) {
-				int mx = 0;
-				for (int j = 0; j < n; j++) {
-					if (j != tf2[i][0]) {
-						for (int k = 0; k < n; k++) {
-							if (a[j][k] == i+'0') {
-								mx = max(mx, abs(tf2[i][0]-j));
-							}
-						}
-					}
-				}
-				cout << mx*tf[i]/2 << " ";
-			} else {
-				int mx = 0;
-				for (int j = 0; j < n; j++) {
-					for (int k = 0; k < n; k++) {
-						if (a[j][k] == i+'0' && k != tf2[i][1]) {
-							mx = max(mx, abs(tf2[i][1]-k));
-						}
-					}
-				}
-				cout << mx*tf[i]/2 << " ";
-			}
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			int x = ar[i][j]-'0';
+			ans[x] = max(ans[x], max(mxr[x]-i, i-mnr[x]) * max(n-j-1, j));	
+			ans[x] = max(ans[x], max(mxc[x]-j, j-mnc[x]) * max(n-i-1, i));	
 		}
 	}
+	
+	for (int i = 0; i < 10; i++)
+		cout << ans[i] << " ";
 	cout << "\n";
+
+
 }
 
 int main() {

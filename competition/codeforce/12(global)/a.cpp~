@@ -7,6 +7,7 @@ void solve() {
 	int n;
 	string s;
 	cin >> n >> s;
+	/*
 	string ans;
 	for (int i = 0; i < n; i++) {
 		if (s[i] == 'b') {
@@ -19,6 +20,9 @@ void solve() {
 		}
 	}
 	cout << ans << "\n";
+	*/
+	sort(s.begin(), s.end());
+	cout << s << "\n";
 }
 
 int main() {

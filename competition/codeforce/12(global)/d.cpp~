@@ -4,25 +4,13 @@ using namespace std;
 #define ll long long
 const int mxN = (int)3e5+5;
 int n, ar[mxN];
-int idk[mxN];
 
-bool ok(int n) {
-	return 1;
-}
-
-void f() {
-	memset(idk, 0, sizeof(idk));
-	idk[0] = (ar[0] < ar[1] ? -1 : 0);
-	//idk[n-1] = (ar[n-1] < ar[n-2] ? -1 : 0);
-	for (int i = 1; i < n; i++) {
-		if (ar[i] < ar[i-1]) {
-			idk[i] = idk[i-1]+1;
-		} else if (ar[i] > ar[i-1]) {
-			idk[i] = idk[i-1]-1;
-		} else {
-			idk[i] = idk[i-1];
-		}
+bool f(int x) {
+	for (int i = 1; i <= x; i++) {
+		if (ar[-1+i] != i || ar[n-i+1] != i)
+			return false;
 	}
+	return true;
 }
 
 void solve() {
@@ -30,20 +18,10 @@ void solve() {
 	cin >> n;
 	for (int i = 0; i < n; i++)
 		cin >> ar[i];
-
-	int idk2[n];
-	for (int i = 0; i < n; i++)
-		idk2[i] = i+1;
-	f();
-
-
-	for (int i = 0; i < n; i++) 
-		cout << idk[i] << " ";
-	cout << "\n";
+	
 	//print
-	cout << (is_permutation(ar, ar+n, idk2) ? 1 : 0);
 	for (int i = 1; i < n; i++) {
-		
+		cout << (f(i) ? 1 : 0);	
 	}
 	cout << (*min_element(ar, ar+n) == 1 ? 1 : 0) << "\n";
 }

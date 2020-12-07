@@ -4,94 +4,59 @@ using namespace std;
 #define ll long long
 const int mxN = 301;
 int n, k;
-char a[mxN][mxN];
-int cntr[mxN], cntc[mxN];
-
-bool f(char x) {
-	if (x == 'X') return true;
-	return false;
-}
+char ar[mxN][mxN];
+char ts[mxN][mxN];
+int c1, c2, c3;
 
 void solve() {
-	//cin
+	c1 = 0, c2 = 0, c3 = 0;
 	cin >> n;
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < n; j++)
-			cin >> a[i][j];
-	
-	//process;
-	
-	for (int i = 1; i < n-1; i++) {
-		for (int j = 1; j < n-1; j++) {
-			if (f(a[i][j])) {
-				if (f(a[i-1][j]) && f(a[i+1][j]) && f(a[i][j-1]) && f(a[i][j+1])) {
-					a[i][j] = 'O';
-				}
-			}
-		}
-	}
-	///*	
-	int cnt1 = 0, cnt2 = 0;
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			if (f(a[i][j])) {
-				if (f(a[i][j-1]) && f(a[i][j+1])) {
-					if (f(a[i-1][j]) && f(a[i-2][j]) || f(a[i+1][j]) && f(a[i+2][j])) {
-						cnt1++;
-					}
-				} else if (f(a[i-1][j]) && f(a[i+1][j])) {
-					if (f(a[i][j-1]) && f(a[i][j-2]) || f(a[i][j+1]) && f(a[i][j+2])) {
-						cnt1++;
-					}
+			cin >> ar[i][j];
+		}
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			int temp = (i+j)%3;
+			if (ar[i][j] == 'X') {
+				if (temp == 1) {
+					ts[i][j] = 'a';
+					c1++;
+				} else if (temp == 2) {
+					ts[i][j] = 'b';
+					c2++;
+				} else {
+					ts[i][j] = 'c';
+					c3++;
 				}
 			}
 		}
 	}
-	for (int i = n-1; i >= 0; i--) {
-		for (int j = n-1; j >= 0; j--) {
-			if (f(a[i][j])) {
-				if (f(a[i][j-1]) && f(a[i][j+1])) {
-					if (f(a[i-1][j]) && f(a[i-2][j]) || f(a[i+1][j]) && f(a[i+2][j])) {
-						cnt2++;
-					}
-				} else if (f(a[i-1][j]) && f(a[i+1][j])) {
-					if (f(a[i][j-1]) && f(a[i][j-2]) || f(a[i][j+1]) && f(a[i][j+2])) {
-						cnt2++;
-					}
-				}
-			}
-		}
-	}
-	
-	if (cnt1 < cnt2) {	
+	int mn = min({c1, c2, c3});
+
+	if (c1 == mn) {
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < n; j++) {
-				if (f(a[i][j])) {
-					if (f(a[i][j-1]) && f(a[i][j+1])) {
-						if (f(a[i-1][j]) && f(a[i-2][j]) || f(a[i+1][j]) && f(a[i+2][j])) {
-							a[i][j] = 'O';
-						}
-					} else if (f(a[i-1][j]) && f(a[i+1][j])) {
-						if (f(a[i][j-1]) && f(a[i][j-2]) || f(a[i][j+1]) && f(a[i][j+2])) {
-							a[i][j] = 'O';
-						}
-					}
+				if (ts[i][j] == 'a' && ar[i][j] == 'X') {
+					ar[i][j] = 'O';
+				}
+			}
+		}
+	} else if (c2 == mn) {
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (ts[i][j] == 'b' && ar[i][j] == 'X') {
+					ar[i][j] = 'O';
 				}
 			}
 		}
 	} else {
-		for (int i = n-1; i >= 0; i--) {
-			for (int j = n-1; j >= 0; j--) {
-				if (f(a[i][j])) {
-					if (f(a[i][j-1]) && f(a[i][j+1])) {
-						if (f(a[i-1][j]) && f(a[i-2][j]) || f(a[i+1][j]) && f(a[i+2][j])) {
-							a[i][j] = 'O';
-						}
-					} else if (f(a[i-1][j]) && f(a[i+1][j])) {
-						if (f(a[i][j-1]) && f(a[i][j-2]) || f(a[i][j+1]) && f(a[i][j+2])) {
-							a[i][j] = 'O';
-						}
-					}
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				if (ts[i][j] == 'c' && ar[i][j] == 'X') {
+					ar[i][j] = 'O';
 				}
 			}
 		}
@@ -99,38 +64,7 @@ void solve() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			if (f(a[i][j])) {
-				if (f(a[i][j-1]) && f(a[i][j-2])) {
-					if (f(a[i-1][j]) && f(a[i-2][j]) || f(a[i+1][j]) && f(a[i+2][j])) {
-						a[i][j] = 'O';
-					}
-				} else if (f(a[i-1][j]) && f(a[i-2][j])) {
-					if (f(a[i][j-1]) && f(a[i][j-2]) || f(a[i][j+1]) && f(a[i][j+2])) {
-						a[i][j] = 'O';
-					}
-				}
-			}
-		}
-	}
-	//*/
-	///*
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			if (f(a[i][j])) {
-				if (f(a[i][j+1]) && f(a[i][j+2])) {
-					a[i][j+2] = 'O';
-				}
-				if (f(a[i+1][j]) && f(a[i+2][j])) {
-					a[i+2][j] = 'O';
-				}
-			}
-		}
-	}	
-	//*/	
-	//print
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			cout << a[i][j];
+			cout << ar[i][j];
 		}
 		cout << "\n";
 	}

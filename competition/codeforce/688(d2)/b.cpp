@@ -7,9 +7,11 @@ const int mxN = (int)2e5+5;
 int n, ar[mxN];
 
 void solve() {
+	//cin
 	cin >> n;
 	for (int i = 0; i < n; i++) 
 		cin >> ar[i];
+	//process
 	ll ans = 0, mx = 0;
 	for (int i = n-1; i > 0; i--) {
 		ll x = abs(ar[i]-ar[i-1]);

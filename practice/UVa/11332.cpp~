@@ -2,16 +2,19 @@
 using namespace std;
 
 #define ll long long
-int a, b, c, d;
+ll n;
 
 void solve() {
-	while(1) {
-		cin >> a >> b >> c >> d;
-		if (a == 0 && b == 0 && c == 0 && d == 0) {
-			return;
+	while(cin >> n && n != 0) {
+		string s = to_string(n);
+		while(s.length() != 1) {
+			int ans = 0;
+			for (char& x : s) {
+				ans += x-'0';
+			}
+			s = to_string(ans);
 		}
-		int ans = 1080 + ((a-b+40)%40 + (c-b+40)%40 + (c-d+40)%40)*9;
-		cout << ans << "\n";
+		cout << s << "\n";
 	}
 }
 

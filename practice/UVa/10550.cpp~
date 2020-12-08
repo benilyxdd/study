@@ -8,13 +8,9 @@ void solve() {
 	while(1) {
 		cin >> a >> b >> c >> d;
 		if (a == 0 && b == 0 && c == 0 && d == 0) {
-			cout << 1890 << "\n";
 			return;
 		}
-		int ans = 1080;
-		ans += (a-b+40)%40 *9;
-		ans += (c-b+40)%40 *9;
-		ans += (c-d+40)%40 *9;
+		int ans = 1080 + ((a-b+40)%40 + (c-b+40)%40 + (c-d+40)%40)*9;
 		cout << ans << "\n";
 	}
 }

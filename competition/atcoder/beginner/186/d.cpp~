@@ -14,7 +14,8 @@ void solve() {
 	sort(ar, ar+n);
 	int cnt = 0;
 	for (int i = n-1; i >= 0; i--) {
-		cnt += i*ar[i]-(n-1-i)*ar[i];
+		//cnt += i*ar[i]-(n-1-i)*ar[i];
+		cnt += (2*i-n+1)*ar[i];
 	}
 	cout << cnt << "\n";
 }

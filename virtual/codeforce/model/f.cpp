@@ -2,8 +2,6 @@
 using namespace std;
 
 #define ll long long
-const int MOD = (int)1e9+7;
-ll ar[1000000];
 
 void solve() {
 

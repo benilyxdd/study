@@ -2,11 +2,20 @@
 using namespace std;
 
 #define ll long long
-const int MOD = (int)1e9+7;
-ll ar[1000000];
 
 void solve() {
-
+	int n;
+	cin >> n;
+	set<int> s;
+	for (int i = 0; i < n; i++) {
+		int a;
+		cin >> a;
+		s.insert(a);
+	}
+	for (const int& x : s) {
+		cout << x << " ";
+	}
+	cout << "\n";
 }
 
 int main() {

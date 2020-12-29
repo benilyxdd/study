@@ -2,24 +2,18 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)2e5+5;
-in ar[mxN], n, k;
+string s;
 
 void solve() {
-	cin >> n >> k;
-	for (int i = 0; i < n; i++)
-		cin >> ar[i];
-
-	int h = ar[0]+k;
-	for (int i = 1; i < n; i++) {
-		if (ar[i] >= ar[i-1]) {
-			h = min(h+k-1, ar[i]+k-1);;
-			if (h < ar[i]) {
-				cout << "NO\n";
-				return;
-			}
+	cin >> s;
+	int len = s.length();
+	if (len == 5) {
+		cout << "3\n";
+	} else {
+		if (s[0] == 'o' && s[1] == 'n' || s[0] == 'o' && s[2] == 'e' || s[1] == 'n' && s[2] == 'e') {
+			cout << "1\n";
 		} else {
-		
+			cout << "2\n";
 		}
 	}
 }
@@ -37,4 +31,5 @@ int main() {
 	}
 	return 0;
 }
+
 

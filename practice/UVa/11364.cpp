@@ -2,26 +2,18 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)2e5+5;
-in ar[mxN], n, k;
+const int mxN = 21;
+int ar[mxN], n;
 
 void solve() {
-	cin >> n >> k;
+	cin >> n;
 	for (int i = 0; i < n; i++)
 		cin >> ar[i];
 
-	int h = ar[0]+k;
-	for (int i = 1; i < n; i++) {
-		if (ar[i] >= ar[i-1]) {
-			h = min(h+k-1, ar[i]+k-1);;
-			if (h < ar[i]) {
-				cout << "NO\n";
-				return;
-			}
-		} else {
-		
-		}
-	}
+	sort(ar, ar+n);
+	int ans = 0;
+	ans += ar[n-1]-ar[0];
+	cout << ans*2 << "\n";
 }
 
 int main() {
@@ -37,4 +29,5 @@ int main() {
 	}
 	return 0;
 }
+
 

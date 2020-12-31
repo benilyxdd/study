@@ -1,38 +1,20 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+
 #define ll long long
-
-
-int n;
-ll d;
-ll N[1001];
-
-bool ok(ll k) {
-	for (int i = 0; i < n; i++) {
-		if (k%N[i] != 0) {
-			k += (N[i] - k%N[i]);
-		}
-	}
-	return k <= d;
-}
+int a[51][51], n, k, p;
+int dp[51][51];
 
 void solve() {
-	cin >> n >> d;
-	for (int i = 0 ; i < n; i++) {
-		cin >> N[i];
-	}
+	cin >> n >> k >> p;
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < k; j++) 
+			cin >> ar[i][j];
+	
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < k; j++)
+			dp[i][j] = 0
 
-	ll low = 0, high = d;
-	while(low < high) {
-		ll mid = (low + high + 1) / 2;
-		if (ok(mid)) {
-			low = mid;
-		} else {
-			high = mid - 1;
-		}
-	}
-	cout << low << "\n";
 }
 
 int main() {

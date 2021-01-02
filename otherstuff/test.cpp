@@ -4,6 +4,9 @@ using namespace std;
 #define ll long long
 
 void solve() {
+	bool x = true;
+	assert(x == false);
+	cout << 1 << "\n";
 
 }
 

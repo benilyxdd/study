@@ -4,10 +4,10 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	bool x = -1;
-	if (x) {
-		cout << "yes";
-	}
+	bool x = true;
+	assert(x == false);
+	cout << 1 << "\n";
+
 }
 
 int main() {

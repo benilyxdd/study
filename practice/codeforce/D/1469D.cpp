@@ -6,7 +6,15 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-
+	
+	int x = n-3+log(n)+1;
+	cout << x << "\n";
+	for (int i = 3; i < n; i++) {
+		cout << i << " " << n << "\n";
+	}
+	for (int i = 0; i < x-n+3; i++) {
+		cout << n << " " << 2 << "\n";
+	}
 }
 
 int main() {
@@ -22,4 +30,5 @@ int main() {
 	}
 	return 0;
 }
+
 

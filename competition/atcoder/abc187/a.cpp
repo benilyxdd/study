@@ -4,8 +4,20 @@ using namespace std;
 #define ll long long
 
 void solve() {
-
-}
+	int a, b;
+	cin >> a >> b;
+	int as = 0;
+	int bs = 0;
+	while(a > 0) {
+		as += a%10;
+		a /= 10;
+	}
+	while(b > 0) {
+		bs += b%10;
+		b /= 10;
+	}
+	cout << max(as, bs) ;
+}	
 
 int main() {
 	ios::sync_with_stdio(0);

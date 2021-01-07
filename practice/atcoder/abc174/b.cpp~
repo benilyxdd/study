@@ -2,15 +2,18 @@
 using namespace std;
 
 #define ll long long
-const int mxM = (int)3e5+5;
-int ar[mxN], n, m;
+#define int ll
 
 void solve() {
+	int n, m, cnt = 0;
 	cin >> n >> m;
-	for (int i = 0; i < m; i++)
-		cin >> ar[i];
-
-
+	for (int i = 0; i < n; i++) {
+		int a, b;
+		cin >> a >> b;
+		ll x = (ll)a*a+b*b;
+		cnt += (x <= m*m);
+	}
+	cout << cnt << "\n";
 }
 
 signed main() {
@@ -18,7 +21,7 @@ signed main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	cin >> t;
+	//cin >> t;
 	while(t--) {
 		//cout << "Case #" << i << ": ";
 		solve();

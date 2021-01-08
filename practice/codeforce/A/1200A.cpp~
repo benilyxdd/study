@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 void solve() {
@@ -24,8 +23,7 @@ void solve() {
 				}
 			}
 		} else {
-			int x = (int)s[i];
-			room[x] = '0';
+			room[s[i]-'0'] = '0';
 		}
 	}
 	cout << room << "\n";

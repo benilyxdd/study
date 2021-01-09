@@ -6,19 +6,8 @@ using namespace std;
 void solve() {
 	int a, b, c;
 	cin >> a >> b >> c;
-	vector<int> x(a), y(b), z(c);
-	for (int i = 0; i < a; i++)
-		cin >> x[i];
-	for (int i = 0; i < b; i++)
-		cin >> y[i];
-	for (int i = 0; i < c; i++)
-		cin >> z[i];
-	sort(x.begin(), x.end());
-	sort(y.begin(), y.end());
-	sort(z.begin(), z.end());
-
-	
-
+	int x = c/a;
+	cout << x*b;
 }
 
 int main() {

@@ -2,11 +2,15 @@
 using namespace std;
 
 #define ll long long
+const int mxN = (int)200001;
+int n, cnt[400001];
+array<int, 3> ar[mxN];
 
 void solve() {
-	ll n, m;
-	cin >> n >> m;
-
+	cin >> n;
+	for (int i = 0; i < n*2; i++) {
+		
+	}
 }
 
 int main() {

@@ -6,7 +6,7 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-
+	cout << "U";
 }
 
 int main() {

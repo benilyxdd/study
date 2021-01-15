@@ -2,9 +2,13 @@
 using namespace std;
 
 #define ll long long
+const int mxN = (int)1e6+5;
+array<int, 3> ar[mxN];
 
 void solve() {
-
+	int n;
+	cin >> n;
+	cout << n;
 }
 
 int main() {

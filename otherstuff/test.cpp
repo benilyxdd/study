@@ -1,0 +1,28 @@
+<<<<<<< HEAD
+=======
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+void solve() {
+	int n;
+	cin >> n;
+	cout << "U";
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int t = 1, i = 1;
+	cin >> t;
+	while(t--) {
+		//cout << "Case #" << i << ": ";
+		solve();
+		//i++;
+	}
+	return 0;
+}
+
+>>>>>>> 5e4763c03ce4b29a61dfbff406b109fb77654e1f

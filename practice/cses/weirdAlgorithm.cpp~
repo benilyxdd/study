@@ -2,25 +2,19 @@
 using namespace std;
 
 #define ll long long
-const int mxN = 100001;
-int n, ar[mxN];
-bool ok[mxN];
 
 void solve() {
+	ll n;
 	cin >> n;
-	for (int i = 0; i < n; i++)
-		cin >> ar[i];
-	
-	for (int i = 0, next = n; i < n; i++) {
-		ok[ar[i]] = 1;
-		if (ok[next]) {
-			while(ok[next]) {
-				cout << next << " ";
-				next--;
-			}
+	while(n != 1) {
+		cout << n << " ";
+		if (n&1) {
+			n = n*3+1;
+		} else {
+			n /= 2;
 		}
-		cout << "\n";
 	}
+	cout << n;
 }
 
 int main() {
@@ -36,5 +30,4 @@ int main() {
 	}
 	return 0;
 }
-
 

@@ -2,28 +2,21 @@
 using namespace std;
 
 #define ll long long
-const int mxN = 100001;
-int n, ar[mxN];
-bool ok[mxN];
+#define int ll
+const int mxN = (int)2e5+5;
+int n, ar[mxN], sum;
 
 void solve() {
 	cin >> n;
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n-1; i++) {
 		cin >> ar[i];
-	
-	for (int i = 0, next = n; i < n; i++) {
-		ok[ar[i]] = 1;
-		if (ok[next]) {
-			while(ok[next]) {
-				cout << next << " ";
-				next--;
-			}
-		}
-		cout << "\n";
+		sum += ar[i];
 	}
+	int x = n*(n+1)/2;
+	cout << x-sum;
 }
 
-int main() {
+signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 
@@ -36,5 +29,4 @@ int main() {
 	}
 	return 0;
 }
-
 

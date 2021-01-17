@@ -1,13 +1,23 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define ll long long
+const int mxN = 51;
+int ar[mxN][mxN], n;
 
 void solve() {
-	int n;
 	cin >> n;
-
+	for (int i = 0; i < n; i++)
+		for (int j = 0; j < n; j++)
+			cin >> ar[i][j];
+	
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			int x = ar[i][j];
+			
+		}
+	}
+	cout << "NO\n";
 }
 
 int main() {

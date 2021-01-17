@@ -2,34 +2,26 @@
 using namespace std;
 
 #define ll long long
+const int mxN = 100001;
+int n, ar[mxN];
+bool ok[mxN];
 
 void solve() {
-	int n;
 	cin >> n;
-	int ar[n];
 	for (int i = 0; i < n; i++)
 		cin >> ar[i];
-
-	vector<int> left;
-	for (int i = 0, j = n; i < n; i++) {
-		if (ar[i] == j) {
-			cout << j << " ";
-			j--;
-			sort(left.rbegin(), left.rend());
-			for (auto it = left.begin(); it != left.end(); it++) {
-				if (*it == j) {
-					cout << j << " ";
-					j--;
-					left.erase(it);
-				} else {
-					break;
-				}
+	
+	for (int i = 0, next = n; i < n; i++) {
+		ok[ar[i]] = 1;
+		if (ok[next]) {
+			while(ok[next]) {
+				cout << next << " ";
+				next--;
 			}
-		} else {
-			left.push_back(ar[i]);
 		}
 		cout << "\n";
 	}
+
 }
 
 int main() {

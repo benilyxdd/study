@@ -2,16 +2,17 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)2002;
-int ar[mxN], n;
+#define int ll
 
 void solve() {
-	cin >> n;
-	
-	
+	int ar[3];
+	for (int i = 0; i < 3; i++)
+		cin >> ar[i];
+	sort(ar, ar+3);
+	cout << ar[2]+ar[0]-ar[1] << "\n";
 }
 
-int main() {
+signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 
@@ -24,4 +25,5 @@ int main() {
 	}
 	return 0;
 }
+
 

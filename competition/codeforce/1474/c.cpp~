@@ -4,11 +4,17 @@ using namespace std;
 #define ll long long
 const int mxN = (int)2002;
 int ar[mxN], n;
+set<pair<int, int>> s;
 
 void solve() {
 	cin >> n;
+	for (int i = 0; i < 2*n; i++) {
+		cin >> ar[i];
+		s.insert({ar[i], i});
+	}
 	
-	
+
+
 }
 
 int main() {

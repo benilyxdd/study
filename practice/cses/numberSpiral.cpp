@@ -2,13 +2,26 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)2002;
-int ar[mxN], n;
 
 void solve() {
-	cin >> n;
-	
-	
+	ll a, b;
+	cin >> a >> b;
+	ll mx = max(a, b);
+	ll ans = (mx-1)*(mx-1);
+	if (mx&1) {
+		if (mx == a) {
+			ans += b;
+		} else {
+			ans += b+(mx-a);
+		}
+	} else {
+		if (mx == b) {
+			ans += a;
+		} else {
+			ans += a+(mx-b);
+		}
+	}
+	cout << ans << "\n";
 }
 
 int main() {

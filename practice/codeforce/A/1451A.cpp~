@@ -2,13 +2,25 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)2002;
-int ar[mxN], n;
 
 void solve() {
+	int n;
 	cin >> n;
-	
-	
+	if (n == 1) {
+		cout << "0\n";
+		return;
+	} else if (n == 2) {
+		cout << "1\n";
+		return;
+	} else if (n == 3) {
+		cout << "2\n";
+		return;
+	}
+	if (n&1) {
+		cout << "3\n"; 
+	} else {
+		cout << "2\n";
+	}
 }
 
 int main() {
@@ -24,4 +36,5 @@ int main() {
 	}
 	return 0;
 }
+
 

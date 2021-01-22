@@ -2,13 +2,13 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)2002;
-int ar[mxN], n;
 
 void solve() {
+	int n;
 	cin >> n;
-	
-	
+	for (int i = 0; i < n; i++) {
+		
+	}
 }
 
 int main() {
@@ -16,7 +16,7 @@ int main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	cin >> t;
+	//cin >> t;
 	while(t--) {
 		//cout << "Case #" << i << ": ";
 		solve();

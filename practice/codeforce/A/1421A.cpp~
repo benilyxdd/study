@@ -2,13 +2,11 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)2002;
-int ar[mxN], n;
 
 void solve() {
-	cin >> n;
-	
-	
+	int a, b;
+	cin >> a >> b;
+	cout << (a^b) << "\n";
 }
 
 int main() {
@@ -24,4 +22,5 @@ int main() {
 	}
 	return 0;
 }
+
 

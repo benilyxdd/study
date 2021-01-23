@@ -1,29 +1,32 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define ll long long
+const int mxN = (int)1e5+5;
+int n, ar[mxN], a, b, rar[mxN];
 
 void solve() {
-	int n;
 	cin >> n;
-	vector<int> v, v1;
 	for (int i = 0; i < n; i++) {
-		int a;
-		cin >> a;
-		v.push_back(a);
+		cin >> a >> b;
+		ar[a] = max(ar[a], b);
 	}
-	for (int i = 0; i < n; i++) {
-		int a;
-		cin >> a;
-		v1.push_back(a);
-	}
-
-	for (int i = 0; i < n ; i++) {
-		for (int j = 0; j < n; j++) {
-
+	for (int i = 0; i < mxN; i++) {
+		if (ar[i] != 0) {
+			rar[ar[i]] = i;
 		}
 	}
+	int mx = mxN;
+	for (int i = mxN-1; i >= 0; i--) {
+		if (rar[i] != 0) {
+			if (rar[i] > mx) {
+				cout << "Happy Alex\n";
+				return;
+			}
+			mx = min(mx, rar[i]);
+		}
+	}
+	cout << "Poor Alex\n";
 }
 
 int main() {

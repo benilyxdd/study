@@ -1,26 +1,30 @@
 #include <bits/stdc++.h>
- 
 using namespace std;
- 
+
 #define ll long long
- 
+const int mxN = 14000;
+int n, ar[mxN];
+
 void solve() {
-	int n;
 	cin >> n;
-	int ans = 0;
-	string s = bitset<64>(n).to_string();
-	for (char& c : s) {
-		if (c == '1') {
-			ans++;
+	for (int i = 0; i < n; i++)
+		cin >> ar[i];
+
+	int ok = 1;
+	for (int i = 0; i < n; i++) {
+		if (ar[i]&1) {
+			cout << (ar[i]+ok)/2 << "\n";
+			ok *= -1;
+		} else {
+			cout << ar[i]/2 << "\n";
 		}
 	}
-	cout << ans << "\n";
 }
- 
+
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
- 
+
 	int t = 1, i = 1;
 	//cin >> t;
 	while(t--) {
@@ -30,5 +34,5 @@ int main() {
 	}
 	return 0;
 }
- 
- 
+
+

@@ -5,12 +5,23 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	string r = "wertyuiopsdfghjkl;xcvbnm,./";
-	string l = "qwertyuioasdfghjklzxcvbnm,.";
-	char c;
-	cin >> c;
-	string s;
-	cin >> s;
+	string o = "qwertyuiopasdfghjkl;zxcvbnm,./";
+	string l = "wertyuiop sdfghjkl; xcvbnm,./ ";
+	string r = " qwertyuio asdfghjkl zxcvbnm,.";
+	string a, b;
+	cin >> a >> b;
+	for (int i = 0; i < b.length(); i++) {
+		for (int j = 0; j < o.length(); j++) {
+			if (b[i] == o[j]) {
+				if (a == "R") {
+					cout << r[j];
+				} else {
+					cout << l[j];
+				}
+				break;
+			}
+		}
+	}
 }
 
 int main() {

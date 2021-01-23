@@ -4,16 +4,21 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	ll a, b;
-	cin >> a >> b;
-	if (a&1) {
-		a++;
+	string s;
+	cin >> s;
+	for (int i = 0; i < s.length(); i++) {
+		int x = s[i]-'0';
+		if (9-x < x) {
+			if (i) {
+				s[i] = (char)9-x+'0';
+			} else {
+				if (9-x != 0) {
+					s[i] = (char)9-x+'0';
+				}	
+			}
+		}
 	}
-	if (b-a+1 < 3) {
-		cout << "-1";
-	} else {
-		cout << a << " " << a+1 << " " << a+2;
-	}
+	cout << s;
 }
 
 int main() {

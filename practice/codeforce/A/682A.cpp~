@@ -2,21 +2,20 @@
 using namespace std;
 
 #define ll long long
+#define int ll
+int n, m;
 
 void solve() {
-	ll a, b;
-	cin >> a >> b;
-	if (a&1) {
-		a++;
+	cin >> n >> m;
+	int cnt = 0;
+	for (int i = 1; i <= n; i++) {
+		cnt += m/5;
+		cnt += 5-i%5 <= m%5;
 	}
-	if (b-a+1 < 3) {
-		cout << "-1";
-	} else {
-		cout << a << " " << a+1 << " " << a+2;
-	}
+	cout << cnt;
 }
 
-int main() {
+signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 

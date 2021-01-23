@@ -4,7 +4,16 @@ using namespace std;
 #define ll long long
 
 void solve() {
-
+	ll a, b;
+	cin >> a >> b;
+	if (a&1) {
+		a++;
+	}
+	if (b-a+1 < 3) {
+		cout << "-1";
+	} else {
+		cout << a << " " << a+1 << " " << a+2;
+	}
 }
 
 int main() {

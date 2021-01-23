@@ -2,17 +2,18 @@
 using namespace std;
 
 #define ll long long
+#define M_PI 3.14159265358979323846
 
 void solve() {
-	ll a, b;
-	cin >> a >> b;
-	if (a&1) {
-		a++;
-	}
-	if (b-a+1 < 3) {
-		cout << "-1";
+	double d, h, v, e;
+	cin >> d >> h >> v >> e;
+	double y = d/2;
+	double x = v/M_PI/y/y;
+	if (x <= e) {
+		cout << "NO\n";
 	} else {
-		cout << a << " " << a+1 << " " << a+2;
+		cout << "YES\n";
+		cout << fixed << setprecision(15) << h/(x-e) << "\n";
 	}
 }
 

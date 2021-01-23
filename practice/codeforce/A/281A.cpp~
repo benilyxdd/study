@@ -4,16 +4,10 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	ll a, b;
-	cin >> a >> b;
-	if (a&1) {
-		a++;
-	}
-	if (b-a+1 < 3) {
-		cout << "-1";
-	} else {
-		cout << a << " " << a+1 << " " << a+2;
-	}
+	string s;
+	cin >> s;
+	s[0] = toupper(s[0]);
+	cout << s;
 }
 
 int main() {

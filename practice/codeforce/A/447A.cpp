@@ -2,16 +2,24 @@
 using namespace std;
 
 #define ll long long
-const int mxN = 101;
-int ar[mxN][mxN], n;
+const int mxN = 302;
+bool ar[mxN];
+int p, n;
 
 void solve() {
-	cin >> n;
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < n; j++)
-			cin >> ar[i][j];
-
-
+	cin >> p >> n;
+	for (int i = 0; i < n; i++) {
+		int a;
+		cin >> a;
+		int temp = a%p;
+		if (ar[temp] == 0) {
+			ar[temp] = 1;
+		} else {
+			cout << i+1;
+			return;
+		}
+	}
+	cout << -1;
 }
 
 int main() {
@@ -27,5 +35,3 @@ int main() {
 	}
 	return 0;
 }
-
-

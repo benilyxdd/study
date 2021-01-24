@@ -2,16 +2,23 @@
 using namespace std;
 
 #define ll long long
-const int mxN = 101;
-int ar[mxN][mxN], n;
+const int mxN = (int)101;
+int ar[mxN], n, sum;
 
 void solve() {
 	cin >> n;
-	for (int i = 0; i < n; i++)
-		for (int j = 0; j < n; j++)
-			cin >> ar[i][j];
-
-
+	for (int i = 0; i < n; i++) {
+		cin >> ar[i];
+		sum += ar[i];
+	}
+	int cnt = 0;
+	for (int i = 1; i <= 5; i++) {
+		int	y = sum+i;
+		if (y%(n+1) != 1) {
+			cnt++;
+		}
+	}
+	cout << cnt;
 }
 
 int main() {

@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define ll long long
@@ -7,10 +6,18 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-	for (int i = 1; i <= n*n; i++) {
+	vector<int> ar[n+1];
+	for (int i = 0; i < n; i++) {
 		for (int j = 1; j <= n; j++) {
-			cout << i+j-1 << " " << n*n-i+j+1 << " ";
+			ar[(i+j)%n].push_back(i*n+j);
 		}
+	}
+	
+	for (vector<int>& x : ar) {
+		for (int& y : x) {
+			cout << y << " ";
+		}
+		cout << "\n";
 	}
 }
 

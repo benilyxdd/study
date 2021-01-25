@@ -2,13 +2,26 @@
 using namespace std;
 
 #define ll long long
+int n, k;
+
+ll cal(int v) {
+	ll t = 1, total = 0;
+	while(v/t) {
+		total += v/t;
+		t *= k;
+	}
+	return total;
+}
 
 void solve() {
-	double n = 2000;
-	for (int i = 0; i < 27; i++) {
-		n *= 1.1;
+	cin >> n >> k;
+	for (int i = n-1; i >= 0; i--) {
+		ll a = cal(i);
+		if (a < n) {
+			cout << i+1;
+			return;
+		}
 	}
-	cout << n;
 }
 
 int main() {

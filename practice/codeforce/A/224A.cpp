@@ -4,6 +4,7 @@ using namespace std;
 #define ll long long
 
 void solve() {
+	int a, b, c;
 
 }
 
@@ -20,4 +21,5 @@ int main() {
 	}
 	return 0;
 }
+
 

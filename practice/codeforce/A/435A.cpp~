@@ -4,11 +4,19 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	double n = 2000;
-	for (int i = 0; i < 27; i++) {
-		n *= 1.1;
+	int n, cnt = 1, temp = 0, m;
+	cin >> n >> m;
+	for (int i = 0; i < n; i++) {
+		int a;
+		cin >> a;
+		if (temp+a > m) {
+			temp = a;
+			cnt++;
+		} else {
+			temp += a;
+		}
 	}
-	cout << n;
+	cout << cnt;
 }
 
 int main() {
@@ -24,4 +32,5 @@ int main() {
 	}
 	return 0;
 }
+
 

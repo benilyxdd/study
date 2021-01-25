@@ -2,13 +2,13 @@
 using namespace std;
 
 #define ll long long
+int n;
 
 void solve() {
-	double n = 2000;
-	for (int i = 0; i < 27; i++) {
-		n *= 1.1;
-	}
-	cout << n;
+	cin >> n;
+	cout << n << " ";
+	for (int i = 1; i < n; i++) 
+		cout << i << " ";
 }
 
 int main() {
@@ -24,4 +24,5 @@ int main() {
 	}
 	return 0;
 }
+
 

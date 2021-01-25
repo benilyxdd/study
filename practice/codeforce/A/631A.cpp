@@ -2,9 +2,22 @@
 using namespace std;
 
 #define ll long long
+const int mxN = 1005;
+int a[mxN], b[mxN], n;
 
 void solve() {
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> a[i];
+	for (int i = 0; i < n; i++)
+		cin >> b[i];
 
+	int x = a[0], y = b[0];
+	for (int i = 0; i < n; i++) {
+		x |= a[i];
+		y |= b[i];
+	}
+	cout << x+y;
 }
 
 int main() {
@@ -20,4 +33,5 @@ int main() {
 	}
 	return 0;
 }
+
 

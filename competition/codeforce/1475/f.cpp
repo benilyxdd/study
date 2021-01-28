@@ -4,11 +4,7 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	double n = 2000;
-	for (int i = 0; i < 365; i++) {
-			n *= 1.01;
-	}
-	cout << fixed << n;
+
 }
 
 int main() {

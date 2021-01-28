@@ -4,11 +4,17 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	double n = 2000;
-	for (int i = 0; i < 365; i++) {
-			n *= 1.01;
+	ll n;
+	cin >> n;
+	for (ll i = 1; i*i <= n; i++) {
+		if (n%i == 0) {
+			if ((i%2 == 1 && i != 1) || (n/i)%2 == 1) {
+				cout << "YES\n";
+				return;
+			}
+		}
 	}
-	cout << fixed << n;
+	cout << "NO\n";
 }
 
 int main() {
@@ -16,7 +22,7 @@ int main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	//cin >> t;
+	cin >> t;
 	while(t--) {
 		//cout << "Case #" << i << ": ";
 		solve();

@@ -4,14 +4,12 @@ using namespace std;
 #define ll long long
 const int mxN = (int)1e5+5;
 int n, k;
-array<int, 2> ar[mxN];
 
 void solve() {
 	cin >> n >> k;
-	for (int i = 0; i < n; i++) 
-		cin >> ar[i][0] >> ar[i][1];
+	for (int i = 0; i < n; i++) {
 
-
+	}
 }
 
 int main() {

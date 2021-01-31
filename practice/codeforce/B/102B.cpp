@@ -6,8 +6,28 @@ using namespace std;
 void solve() {
 	string s;
 	cin >> s;
-	int cnt = 0;
-	while(
+
+	int ans = 0;
+	if (s.length() == 1) {
+		cout << ans;
+		return;
+	}
+
+	while(true) {
+		int cnt = 0;
+		//add all no
+		for (char& ch : s) {
+			cnt += ch-'0';
+		}
+		ans++;
+
+		s = to_string(cnt);
+
+		if (s.length() == 1) {
+			cout << ans;
+			return;
+		}
+	}
 }
 
 int main() {

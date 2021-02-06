@@ -1,23 +1,32 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define ll long long
+const int mxN = 1e5+5;
+int n, a, b;
 
 void solve() {
-	int n;
+	vector<pair<int, int>> pos, neg;
 	cin >> n;
-	int mn = 101;
-	int ans = 0;
 	for (int i = 0; i < n; i++) {
-		int a, b;
 		cin >> a >> b;
-		mn = min(b, mn);
-		ans += a*mn;
+		if (a < 0) {
+			neg.push_back({-a, b});
+		} else {
+			pos.push_back({a, b});
+		}
 	}
-	cout << ans << "\n";
+	sort(pos.begin(), pos.end());
+	sort(neg.begin(), neg.end());
+	pos.push_back({0, 0});
+	neg.push_back({0, 0});
 
-
+	int ans = 0;
+	for (int i = 0; i < min(pos.size(), neg.size()); i++) {
+		ans += pos[i].second;
+		ans += neg[i].second;
+	}
+	cout << ans;
 }
 
 int main() {

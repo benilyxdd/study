@@ -1,9 +1,8 @@
-#include <bits/stdc++.h>
-
+#include <bits/stdc++.h> 
 using namespace std;
-
+ 
 #define ll long long
-
+ 
 void solve() {
 	int a, b;
 	cin >> a >> b;
@@ -11,7 +10,7 @@ void solve() {
 	for (int i = 1; i <= a; i++) {
 		cin >> xd[i];
 	}
-
+ 
 	int cnt = 0;
 	for (int i = 1; i <= a; i++) {
 		if (xd[i]) {
@@ -24,11 +23,11 @@ void solve() {
 	}
 	cout << cnt << "\n";
 }
-
+ 
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-
+ 
 	int t = 1, i = 1;
 	//cin >> t;
 	while(t--) {
@@ -38,4 +37,3 @@ int main() {
 	}
 	return 0;
 }
-

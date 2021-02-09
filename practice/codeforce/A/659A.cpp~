@@ -4,15 +4,19 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	vector<int> v(3);
-	for (int i = 0; i < 3; i++) 
-		cin >> v[i];
-
-	int a = sqrt(v[0]*v[1]/v[2]);
-	int b = sqrt(v[0]*v[2]/v[1]);
-	int c = sqrt(v[1]*v[2]/v[0]);
-	int x = a+b+c;
-	cout << 4*x;
+	int n, a, b;
+	cin >> n >> a >> b;
+	int x = b%n, y;
+	if (x < 0) {
+		y = (n+x)+a;
+	} else {
+		y = a+x;
+	}
+	if (y%n == 0) {
+		cout << n;
+	} else {
+		cout << y%n;
+	}
 }
 
 int main() {

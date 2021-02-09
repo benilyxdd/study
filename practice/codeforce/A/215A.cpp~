@@ -4,7 +4,6 @@ using namespace std;
 #define ll long long
 const int mxN = 51;
 int a[mxN], b[mxN], n, m;
-int cnt[20000];
 
 void solve() {
 	cin >> n;
@@ -15,25 +14,24 @@ void solve() {
 	for (int i = 0; i < m; i++)
 		cin >> b[i];
 	
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < m; j++) {
-			int x = a[i], y = b[j];
-			if (x < y) 
-				swap(x, y);
-				
-			if (x%y == 0) {
-				cnt[(x/y)]++;
+	int mx = 0;	
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (b[i]%a[j] == 0) {
+				mx = max(mx, b[i]/a[j]);		
 			}
 		}
 	}
-	int mx = 0;
-	for (int i = 0; i < 20000; i++) {
-		//cout << cnt[i] << " ";
-		if (cnt[i] != 0) {
-			mx = max(mx, cnt[i]);
+
+	int cnt = 0;
+	for (int i = 0; i < m; i++) {
+		for (int j = 0; j < n; j++) {
+			if (b[i]/a[j] == mx && b[i]%a[j] == 0) {
+				cnt++;
+			}
 		}
 	}
-	cout << mx;
+	cout << cnt;
 }
 
 int main() {

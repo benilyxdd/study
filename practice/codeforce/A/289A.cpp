@@ -6,10 +6,15 @@ const int mxN = (int)1e5+5;
 int n, k;
 
 void solve() {
+	int la = 0;
 	cin >> n >> k;
 	for (int i = 0; i < n; i++) {
-
+		int a, b;
+		cin >> a >> b;
+		la = b;
 	}
+	int x = k-la%k;
+	cout << (x == k ? 0 : x);
 }
 
 int main() {

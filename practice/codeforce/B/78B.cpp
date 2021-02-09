@@ -2,13 +2,17 @@
 using namespace std;
 
 #define ll long long
+string s = "ROYGBIV";
 
 void solve() {
-	string s;
-	cin >> s;
-	cout << s;
-	reverse(s.begin(), s.end());
-	cout << s;
+	int n;
+	cin >> n;
+	for (int i = 0; i < 7; i++) {
+		cout << s[i];
+	}
+	for (int i = 0; i < n-7; i++) {
+		cout << s[i%4+3];
+	}
 }
 
 int main() {

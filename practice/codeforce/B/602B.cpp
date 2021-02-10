@@ -2,12 +2,19 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)1e5+5;
-int n, m;
+const int mxN = 100001;
+int ar[mxN], n;
+bool in[mxN];
 
 void solve() {
-	cin >> n >> m;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> ar[i];
 
+	int ans = 0,
+	for (int i = 0, j = 0; i < n; i++) {
+		
+	}	
 }
 
 int main() {

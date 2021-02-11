@@ -3,28 +3,30 @@ using namespace std;
 
 #define ll long long
 const int mxN = 2e5+5;
-int ar[mxN], n, dp[mxN][2];
-
-int f(int a, int b, int c) {
-	if (ar[a]*2 >= ar[b]) 
-		return 0;
-
-	if (dp[a][c] != -1)
-		return dp[a][c];
-
-	int temp = min(f(a, b-1, 1), f(a+1, b, 0))+1;
-	dp[a][c] = temp;
-	return temp;
-}
+const int mxC = 5001;
+int cnt[mxC], ar[mxN], n;
 
 void solve() {
-	memset(dp, -1, sizeof(dp));
+	set<int> s;
 	cin >> n;
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < n; i++) {
 		cin >> ar[i];
-
-	sort(ar, ar+n);
-	cout << f(0, n-1, 0);
+		cnt[ar[i]]++;
+		s.insert(ar[i]);
+	}
+	
+	int mn = mxN*10;
+	for (const int& x : s) {
+		int temp = 0;
+		for (int i = 0; i <= 5000; i++) {
+			if (i*2 < x || 2*x < i) {
+				temp += cnt[i];
+			}
+		}
+		if (temp != 0) 
+			mn = min(mn, temp);
+	}
+	cout << (mn == mxN*10 ? 0 : mn);
 }
 
 int main() {

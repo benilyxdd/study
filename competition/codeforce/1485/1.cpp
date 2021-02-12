@@ -1,11 +1,10 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define ll long long
 
 void solve() {
-	
+
 }
 
 int main() {
@@ -13,11 +12,11 @@ int main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	cin >> t;
+	//cin >> t;
 	while(t--) {
-		cout << "Case #" << i << ": ";
+		//cout << "Case #" << i << ": ";
 		solve();
-		i++;
+		//i++;
 	}
 	return 0;
 }

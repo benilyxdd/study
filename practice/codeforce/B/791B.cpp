@@ -2,19 +2,19 @@
 using namespace std;
 
 #define ll long long
-const int mxN = 1e5+5;
-int ar[mxN], n;
+const int mxN = 150005;
+vector<int> ar[mxN];
+int n, m, a, b;
 
 void solve() {
-	cin >> n;
-	for (int i = 0; i < n; i++)
-		cin >> ar[i];
-
-	int mx = 0, f = 0;
-	set<int> s;
-	for (int i = 0; i < n; i++) {
-		
+	cin >> n >> m;
+	for (int i = 0; i < m; i++) {
+		cin >> a >> b;
+		ar[a].push_back(b);
+		ar[b].push_back(a);
 	}
+
+	bool ok = false;
 
 }
 

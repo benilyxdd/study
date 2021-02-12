@@ -1,24 +1,10 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define ll long long
 
 void solve() {
-	int a, n;
-	cin >> n;
-	map<int, ll> m;
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < n; j++) {
-			cin >> a;
-			m[i-j] +=a;
-		}
-	}
-	ll ans = 0;
-	for (auto xd : m) {
-		ans = max(ans, xd.second);
-	}
-	cout << ans << "\n";
+
 }
 
 int main() {

@@ -1,12 +1,7 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-#define ll long long
-
-string a;
 
 void solve() {
-	cin >> a;
 
 }
 

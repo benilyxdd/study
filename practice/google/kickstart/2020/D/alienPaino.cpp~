@@ -1,11 +1,15 @@
 #include <bits/stdc++.h>
-
 using namespace std;
-#define ll long long
+
+const int mxN = 1e4+4;
+int ar[mxN], n;
 
 void solve() {
-	int n;
+	int mn = mxN;
 	cin >> n;
+	for (int i = 0; i < n; i++) 
+		cin >> ar[i];
+	
 
 }
 

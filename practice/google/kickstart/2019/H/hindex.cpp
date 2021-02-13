@@ -1,23 +1,19 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
+const int mxN = (int)1e5+5;
+int ar[mxN], cnt[mxN], n;
+
 void solve() {
-	int n;
+	memset(cnt, 0, sizeof(cnt));
 	cin >> n;
-	vector<int> v;
-	int cnt = 0;
+	for (int i = 0; i < n; i++) 
+		cin >> ar[i];
+	
+
 	for (int i = 0; i < n; i++) {
-		int a;
-		cin >> a;
-		v.push_back(a);
+		
 	}
-	for (int i = 1; i < n-1; i++) {
-		if (v[i] > v[i-1] && v[i] > v[i+1]) {
-			cnt++;
-		}
-	}
-	cout << cnt << "\n";
 }
 
 int main() {

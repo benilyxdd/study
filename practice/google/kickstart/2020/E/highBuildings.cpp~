@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+const int mxN = 101;
+int ar[mxN];
+
+void solve() {
+	memset(ar, 0, sizeof(ar));
+	int n, a, b, c;
+	cin >> n >> a >> b >> c;
+	
+	if (a-c+b > n || (a-c+b-c == 0 && n-c != 0)) {
+		cout << "IMPOSSIBLE\n";
+		return;
+	}
+
+	for (int i = a-c+1; i <= a; i++) {
+		ar[i] = n;
+	}
+	for (int i = 1; i <= a-c; i++) {
+		ar[i] = i;
+	}
+	for (int i = n, j = b-c, k = 2; i >= n-b+c && j > 0; i--, j--) {
+		ar[i] = k;
+	}
+	for (int i = 1; i <= n; i++) {
+		if (ar[i] == 0) {
+			ar[i] = 1;
+		}
+	}
+
+	for (int i = 1; i <= n; i++) 
+		cout << ar[i] << " ";
+	cout << "\n";
+}
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int t = 1, i = 1;
+	cin >> t;
+	while(t--) {
+		cout << "Case #" << i << ": ";
+		solve();
+		i++;
+	}
+	return 0;
+}

@@ -2,31 +2,20 @@
 using namespace std;
 
 #define ll long long
+const int mxN = 1005;
+int n, x, y;
+vector<int> a[mxN], b[mxN];
 
 void solve() {
-	string a, b;
-	int n;
 	cin >> n;
-	bool ar[n];
 	for (int i = 0; i < n; i++) {
-		string s;
-		cin >> s;
-		if (s[0] == '-') {
-			b += s[1];
-			ar[i] = 1;
-		} else {
-			a += s;
-		}
+		cin >> x >> y;
+		a[x].push_back(i);
+		b[y].push_back(i);
 	}
 
-	for (int i = 0; i < min(a.length(), b.length()); i++) {
-		if (a[i] > b[i]) {
-			cout << "first";
-			return;
-		} else if (b[i] > a[i]) {
-			cout << "second";
-			return;
-		}
+	for (int i = 0; i <= 5; i++) {
+		cout << a[i].size() <<  " " << b[i].size() << "\n";
 	}
 }
 

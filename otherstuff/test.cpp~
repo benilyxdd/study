@@ -88,9 +88,96 @@ string reverse_string(string s) {
 	return s;
 }
 
+void all_permutations(vector<int>& vec) {
+	sort(vec.begin(), vec.end());
+	do {
+		for (int& x : vec) {
+			cout << x << " ";
+		}
+		cout << "\n";
+	} while(next_permutation(vec.begin(), vec.end()));
+}
+
+void all_subsequences(vector<int>& vec) {
+	sort(vec.begin(), vec.end());
+	int len = vec.size();
+	for (int i = 0; i < (1 << len); i++) {
+		vector<int> temp;
+		for (int j = 0; j < len; j++) {
+			if (i & (1 << j)) {
+				temp.push_back(vec[j]);
+			}
+		}
+
+		for (int& x : temp) 
+			cout << x << " ";
+		cout << "\n";
+	}	
+}
+
+bool ok(vector<vector<int>>& ar, int row, int col, int num) {
+	for (int i = 0; i < 9; i++) 
+		if (ar[row][i] == num)
+			return false;
+	
+	for (int i = 0; i < 9; i++) 
+		if (ar[i][col] == num)
+			return false;
+
+	int x = row-row%3;
+	int y = col-col%3;
+
+	for (int i = 0; i < 3; i++) 
+		for (int j = 0; j < 3; j++)
+			if (ar[i+x][j+y] == num)
+				return false;
+
+	return true;
+}
+
+bool sudoku(vector<vector<int>>& ar, int row, int col) {
+	if (row == 8 && col == 9) 
+		return true;
+
+	if (col == 9) {
+		row++;
+		col = 0;
+	}
+
+	if (ar[row][col] > 0) 
+		return sudoku(ar, row, col+1);
+
+	for (int i = 1; i <= 9; i++) {
+		if (ok(ar, row, col, i)) {
+			ar[row][col] = i;
+			if (sudoku(ar, row, col+1))
+				return true;
+		}
+		ar[row][col] = 0;
+	}
+	return false;
+}
+
+void sudoku_solver() {
+	vector<vector<int>> ar(9, vector<int>(9));
+	for (int i = 0; i < 9; i++)
+		for (int j = 0; j < 9; j++)
+			cin >> ar[i][j];
+	if (sudoku(ar, 0, 0)) {
+		cout << "\n";
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				cout << ar[i][j] << " ";
+			}
+			cout << "\n";	
+		}
+	} else {
+		cout << "no solution\n";
+	}
+}
+
 void solve() {
-	string s = "asdasdasd";
-	cout << reverse_string(s);
+
 }
 
 int main() {

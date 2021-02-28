@@ -2,28 +2,44 @@
 using namespace std;
 
 #define ll long long
-const int mxN = (int)1e4+5;
-vector<int> ar[mxN];
-int n, m;
+const int mxN = (int)1e3+5;
+int n, m, ar[mxN][mxN];
 
 void solve() {
 	cin >> n >> m;
 	for (int i = 0; i < m; i++) {
 		int a, b;
 		cin >> a >> b;
-		ar[a].push_back(b);
-		ar[b].push_back(a);
+		ar[a][b] = 1;
+		ar[b][a] = 1;
 	}
 
 	int ans = 0;
 	while(true) {
 		bool ok = 1;
-		for (int i = 1; i <= n; i++) {
-			if (ar[i].size() == 1) {
-
+		vector<int> gg;
+		for (int i = 0; i <= n; i++) {
+			int cnt = 0;
+			for (int j = 0; j <= n; j++) {
+				cnt += ar[i][j];
+			}
+			if (cnt == 1) {
+				ok = false;
+				gg.push_back(i);
 			}
 		}
+		for (int& in : gg) {
+			for (int j = 0; j <= n; j++) {
+				ar[in][j] = 0;
+				ar[j][in] = 0;
+			}
+		}
+		ans++;
+		if (ok) {
+			break;
+		}
 	}
+	cout << ans-1;
 }
 
 int main() {

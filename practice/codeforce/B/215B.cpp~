@@ -27,7 +27,7 @@ void input() {
 }
 
 void solve() {
-	cout << *(--x.end());
+	
 }
 
 int main() {

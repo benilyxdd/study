@@ -6,27 +6,26 @@ using namespace std;
 void solve() {
 	int vp, vd, t, f, c;
 	cin >> vp >> vd >> t >> f >> c;
-	
-	int ans = 0, princess = 0, dragon = 0;
-	for (int i = 1; i < 2001; i++) {
-		princess += vp;
-		if (princess >= c) {
-			cout << ans;
+
+	int ans = 0, u = (c+vp-1)/vp;
+	for (int i = 1, p = 0, d = 0; i <= u; i++) {
+		p += vp;
+		if (p > c) {
 			break;
 		}
+		if (i >= t) {
+			d += vd;
+		}
 
-		if (i > t) {
-			dragon += vd;
-			if (dragon >= princess) {
-				ans++;
-				int back_time = princess/vd;
-				cout << back_time << "\n";
-				princess += back_time*vp;
-				princess += f*vp;
-				dragon = 0;
-			}
+		if (d >= p) {
+			ans++;
+			int g = f+d/vd;
+			d = 0;
+			p += vp*g;
+			i += g;
 		}
 	}
+	cout << ans;
 }
 
 int main() {

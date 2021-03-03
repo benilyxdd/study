@@ -6,16 +6,29 @@ const int mxN = (int)1e5+5;
 int ar[mxN], n;
 
 void solve() {
-	cin >> n;
-	assert(n > 1);
-	for (int i = 0; i < n; i++) 
-		cin >> ar[i];
+	set<int> ans;
+	stack<int> s, s2;
 
-	set<int> s;
-	for (int i = 0; i < n-1; i++) {
-		s.insert(abs(ar[i]-ar[i-1]));
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> ar[i];
+	
+	for (int i = 0; i < n; i++) {
+		while (!s.empty() && s.top() <= ar[i]) {
+			ans.insert(ar[i]-s.top());
+			s.pop();
+		}
+		s.push(ar[i]);
 	}
-	cout << s.size() << '\n';
+	reverse(ar, ar+n);
+	for (int i = 0; i < n; i++) {
+		while (!s2.empty() && s2.top() <= ar[i]) {
+			ans.insert(ar[i]-s2.top());
+			s2.pop();
+		}
+		s2.push(ar[i]);
+	}
+	cout << ans.size() << '\n';
 }
 
 int main() {

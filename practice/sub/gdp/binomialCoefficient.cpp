@@ -25,6 +25,9 @@ void solve() {
 		}
 		cout << '\n';
 	}
+	if (n < k)
+		dp[n][k] = 0;
+	cout << "Ans: " << dp[n][k];
 }
 
 int main() {

@@ -11,13 +11,15 @@ void solve() {
 	for (int i = 0; i < n; i++)
 	   cin >> ar[i];
 	
-	dp[0] = ar[0];
-	dp[1] = ar[1]+ar[0];
-
-	for (int i = 2; i < n; i++) {
-		dp[i] = max({dp[i-1], dp[i-2]+ar[i], dp[i-3]+ar[i-1]+ar[i]});
+	int mx = 0, inc = ar[0], ne;
+	for (int i = 1; i < n; i++) {
+		ne = max(mx, inc);
+		inc = mx+ar[i];
+		mx = ne;
+		//inc = mx + ar[i];
+		//mx = max(inc-ar[i], mx);
 	}
-	cout << dp[n-1];
+	cout << max(mx, inc);
 }
 
 int main() {
@@ -33,4 +35,5 @@ int main() {
 	}
 	return 0;
 }
+
 

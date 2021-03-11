@@ -15,10 +15,17 @@ void input() {
 
 void f() {
 	dp[0] = 0;
-	dp[1] = (ar[1]-ar[0] < k ? 1 : 0);
+	
+	for (int i = 1; i < n; i++) {
+		dp[i] = dp[i-1];
 
-	for (int i = 2; i < n; i++) {
-		dp[i] = dp[i-1] + dp[i-2] + ar[i]+ar[i-1];
+		if (ar[i]-ar[i-1] < k) {
+			if (i > 1) {
+				dp[i] = max(dp[i], dp[i-2]+ar[i]+ar[i-1]);
+			} else {
+				dp[i] = max(dp[i], ar[i]+ar[i-1]);
+			}
+		}
 	}
 }
 
@@ -31,7 +38,8 @@ void debug() {
 void solve() {
 	input();
 	f();
-	debug();
+	//debug();
+	cout << dp[n-1];
 }
 
 int main() {

@@ -9,13 +9,30 @@ int ar[mxN], n, k;
 void solve() {
 	cin >> n >> k;
 	assert(k == 0);
-	vector<int> 
-
 	for (int i = 0; i < n; i++)
 		cin >> ar[i];
 
 	int ans = 0;
-
+	set<int> s;
+	for (int i = 0; i < n; i++) {
+		int x = ar[i];
+		if (s.size() == 0) {
+			s.insert(x);
+			continue;
+		}
+		for (const int& y : s) {
+			int t = x*y;
+			int t2 = sqrt(t);
+			if (t2*t2 == t) {
+				ans++;
+				s.clear();
+				s.insert(x);
+				continue;
+			}
+		}
+		s.insert(x);
+	}
+	cout << ans << '\n';
 }
 
 signed main() {

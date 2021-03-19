@@ -2,49 +2,58 @@
 using namespace std;
 
 #define ll long long
-#define int ll
 const int mxN = 51;
-int n, k, p, ar[mxN][mxN], pre[mxN][mxN], dp[mxN][mxN*mxN];
+int n, k, p, ar[mxN][31], pre[mxN][31], dp[mxN][mxN*31];
 
-int f(int take, int stacks) {
-	if (take >= p || stacks == n) 
-		return 0;
-
-	if (dp[take][stacks] != -1) 
-		return dp[take][stacks];
-
-	int ans = 0;
-	for (int i = 0; i <= min(p-take, k); i++) {
-		ans = max(ans, f(take+i, stacks+1)+pre[stacks][i]);
+void debug() {
+	cout << "Pre: \n";
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j <= k; j++) {
+			cout << pre[i][j] << ' ';
+		}
+		cout << '\n';
 	}
-	return ans;
+	cout << "\nDp: \n";
+	for (int i = 0; i <= n; i++) {
+		for (int j = 0; j <= p; j++) {
+			cout << dp[i][j] << ' ';
+		}
+		cout << '\n';
+	}
+	cout << '\n';
 }
 
 void prefix() {
 	for (int i = 0; i < n; i++) {
-		pre[i][0] = 0;
 		for (int j = 1; j <= k; j++) {
-			pre[i][j] = pre[i][j-1]+ar[i][j-1];
+			pre[i][j] = pre[i][j-1] + ar[i][j-1];
 		}
 	}
-	/*
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j <= k; j++) {
-			cout << pre[i][j] << " ";
+}
+
+void f() {
+	for (int i = 1; i <= n; i++) {
+		for (int j = 0; j <= p; j++) {
+			for (int x = 0; x <= min(j, k); x++) {
+				dp[i][j] = max(dp[i][j], pre[i-1][x] + dp[i-1][j-x]);
+			}
 		}
-		cout << "\n";
 	}
-	*/
 }
 
 void solve() {
 	memset(dp, 0, sizeof(dp));
+	//memset(pre, 0, sizeof(pre));
+
 	cin >> n >> k >> p;
 	for (int i = 0; i < n; i++)
 		for (int j = 0; j < k; j++) 
 			cin >> ar[i][j];
 	
 	prefix();
+	f();
+	//debug();
+	cout << dp[n][p] << '\n';
 }
 
 signed main() {

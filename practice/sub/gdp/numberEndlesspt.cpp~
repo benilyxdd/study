@@ -64,7 +64,7 @@ int cnt() {
 void solve() {
 	input();
 	f();
-	debug();
+	//debug();
 	cout << cnt();
 }
 

@@ -1,25 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int mxN = 101;
-int ar[mxN];
+#define ll long long
 
 void solve() {
-	memset(ar, 0, sizeof(ar));
 	int n, a, b, c;
 	cin >> n >> a >> b >> c;
-	
-	if (a+b-c > n) {
+
+	int x = a+b-c;
+	if (x > n || (x == 1 && n > 1)) {
 		cout << "IMPOSSIBLE\n";
-		return;
+	} else if (n == 1) {
+		cout << "1\n";
+	} else if (n == 2) {
+		if (c == 2) {
+			cout << "1 1\n";
+		} else if (a == 2) {
+			cout << "1 2\n";
+		} else if (b == 2) {
+			cout << "2 1\n";
+		}
+	} else {
+		vector<int> ans;
+		for (int i = 0; i < a-c; i++) {
+			ans.push_back(2);
+		}
+		for (int i = 0; i < c; i++) {
+			ans.push_back(3);
+		}
+		for (int i = 0; i < b-c; i++) {
+			ans.push_back(2);
+		}
+		int left = n-x;
+		ans.insert(ans.begin()+1, left, 1);
+
+		for (int& x : ans) {
+			cout << x << ' ';
+		}
+		cout << '\n';
 	}
-
-		
-
-
-	for (int i = 1; i <= n; i++) 
-		cout << ar[i] << " ";
-	cout << "\n";
 }
 
 int main() {

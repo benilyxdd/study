@@ -1,16 +1,52 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int mxN = 1e4+4;
-int ar[mxN], n;
+#define ll long long 
+const int mxN = (int)1e4+4;
+int dp[mxN][4];
+
+void debug(int n) {
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < 4; j++){
+			cout << dp[i][j] << ' ';
+		}
+		cout << '\n';
+	}
+}
 
 void solve() {
-	int mn = mxN;
+	int n;
 	cin >> n;
-	for (int i = 0; i < n; i++) 
+	vector<int> ar(n);
+	for (int i = 0; i < n; i++)
 		cin >> ar[i];
 	
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < 4; j++) {
+			dp[i][j] = (int)1e9;
+		}
+	}
+	for (int i = 0; i < 4; i++) {
+		dp[0][i] = 0;
+	}
 
+
+	for (int i = 1; i < n; i++) {
+		for (int j = 0; j < 4; j++) {
+			for (int k = 0; k < 4; k++) {
+				if ((ar[i] > ar[i-1] && j > k) || (ar[i] < ar[i-1] && j < k) || (ar[i] == ar[i-1] && j == k)) {
+					dp[i][j] = min(dp[i][j], dp[i-1][k]);
+				} else {
+					dp[i][j] = min(dp[i][j], dp[i-1][k]+1);
+				}
+			}
+		}
+	}
+
+	//cout << '\n';
+	//debug(n);
+	
+	cout << *min_element(dp[n-1], dp[n-1]+4) << '\n';
 }
 
 int main() {

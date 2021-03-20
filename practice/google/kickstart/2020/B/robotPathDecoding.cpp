@@ -2,43 +2,38 @@
 using namespace std;
 
 #define ll long long
-map<char, int> m
-int i;
-
-void f(string a) {
-	if(a[i] > 49 && a[i] < 58) {
-		string temp;
-		int cnt = 1, j = i+1;
-		while(cnt > 0) {
-			if (ar[j] == '(') {
-				cnt++;
-			} else if (ar[j] == ')') {
-				cnt--;
-			}
-			temp += a[j];
-		}
-		
-		f(temp);
-
-		int mu = ar[i]-'0';
-		for (pair<const char, int>& x : m) {
-			x.second *= mu;
-		}
-	}	
-}
+#define int ll
+const int MOD = (int)1e9;
 
 void solve() {
-	m['N'] = 0;
-	m['S'] = 0;
-	m['E'] = 0;
-	m['W'] = 0;
-	
 	string s;
 	cin >> s;
-	int len = s.length();
+	int len = s.length(), ax = 0, ay = 0;
+
+	vector<int> t;
+	t.push_back(1);
+
+	for (int i = 0; i < len; i++) {
+		if (s[i] == '(') {
+			t.push_back((s[i-1]-'0')*t.back()%MOD);
+		} else if (s[i] == ')') {
+			t.pop_back();
+		} else if (isalpha(s[i])) {
+			if (s[i] == 'E') {
+				ax = (ax+t.back())%MOD;
+			} else if (s[i] == 'W') {
+				ax = ((ax-t.back())%MOD+MOD)%MOD;
+			} else if (s[i] == 'S') {
+				ay = (ay+t.back())%MOD;
+			} else if (s[i] == 'N') {
+				ay = ((ay-t.back())%MOD+MOD)%MOD;
+			}
+		}
+	}
+	cout << ax+1 << ' ' << ay+1 << '\n';
 }
 
-int main() {
+signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 
@@ -51,3 +46,4 @@ int main() {
 	}
 	return 0;
 }
+

@@ -25,10 +25,10 @@ void solve() {
 		}
 	}
 
-	priority_queue<int, vector<int>, decltype(&cmp)> pq(&cmp);
+	vector<priority_queue<int, vector<int>, decltype(&cmp)>> pq(m);
 	for (int i = 0; i < m; i++) {
 		for (int j = 0; j < ar[i].size(); j++) {
-			//pq[i].push(ar[j]);
+			pq[i].push(ar[j]);
 		}
 	}
 

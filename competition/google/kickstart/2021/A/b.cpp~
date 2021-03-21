@@ -4,7 +4,105 @@ using namespace std;
 #define ll long long
 
 void solve() {
+	int r, c;
+	cin >> r >> c;
+	int ar[r][c];
+	for (int i = 0; i < r; i++) {
+		for (int j = 0; j < c; j++) {
+			cin >> ar[i][j];
+		}
+	}
 
+	//[0] = up, [1] = down, [2] = left, [3] = right;
+	array<int, 4> cnt[r][c];
+	memset(cnt, 0, sizeof(cnt));
+
+	for (int i = 0; i < r; i++) {
+		for (int j = 0; j < c; j++) {
+			if (ar[i][j] == 1) {
+				int x = i, y = j;
+
+				int u = 1, d = 1, l = 1, ri = 1;
+				while(x > 0 && ar[x-1][y] == 1) {
+					x--, u++;
+				}
+
+				x = i, y = j;
+				while(x < r-1 && ar[x+1][y] == 1) {
+					x++, d++;
+				}
+	
+				x = i, y = j;
+				while(y > 0 && ar[x][y-1] == 1) {
+					y--, l++;
+				}
+	
+				x = i, y = j;
+				while(y < c-1 && ar[x][y+1] == 1) {
+					y++, ri++;
+				}
+
+				cnt[i][j][0] = u;
+				cnt[i][j][1] = d;
+				cnt[i][j][2] = l;
+				cnt[i][j][3] = ri;
+			}
+		}
+	}
+	/*
+	for (int i = 0; i < r; i++) {
+		for (int j = 0; j < c; j++) {
+			cout << i << ' ' << j << ": ";
+			for (int k = 0; k < 4; k++) {
+				cout << cnt[i][j][k] << ' ';
+			}
+			cout << '\n';
+		}
+	}
+	*/
+	ll ans = 0;
+	for (int i = 0; i < r; i++) {
+		for (int j = 0; j < c; j++) {
+			//if (cnt[i][j][0] <= 1 && cnt[i][j][1] <= 1 || cnt[i][j][2] <= 1 && cnt[i][j][3] == 1) {
+				//continue;
+			//} else {
+				if (cnt[i][j][0] > 3) {
+					if (cnt[i][j][2] > 1 && cnt[i][j][2] >= cnt[i][j][0]/2) {
+						ans += min(cnt[i][j][0]/2-1, cnt[i][j][2]-1);
+					}
+					if (cnt[i][j][3] > 1 && cnt[i][j][3] >= cnt[i][j][0]/2) {
+						ans += min(cnt[i][j][0]/2-1, cnt[i][j][3]-1);
+					}
+				}
+				if (cnt[i][j][1] > 3) {
+					if (cnt[i][j][2] > 1 && cnt[i][j][2] >= cnt[i][j][1]/2) {
+						ans += min(cnt[i][j][1]/2-1, cnt[i][j][2]-1);
+					}
+					if (cnt[i][j][3] > 1 && cnt[i][j][3] >= cnt[i][j][1]/2) {
+						ans += min(cnt[i][j][1]/2-1, cnt[i][j][3]-1);
+					}
+				}
+				if (cnt[i][j][2] > 3) {
+					if (cnt[i][j][0] > 1 && cnt[i][j][0] >= cnt[i][j][2]/2) {
+						ans += min(cnt[i][j][2]/2-1, cnt[i][j][0]-1);
+					}
+					if (cnt[i][j][1] > 1 && cnt[i][j][1] >= cnt[i][j][2]/2) {
+						ans += min(cnt[i][j][2]/2-1, cnt[i][j][1]-1);
+					}
+				}
+				if (cnt[i][j][3] > 3) {
+					if (cnt[i][j][0] > 1 && cnt[i][j][0] >= cnt[i][j][3]/2) {
+						ans += min(cnt[i][j][3]/2-1, cnt[i][j][0]-1);
+					}
+					if (cnt[i][j][1] > 1 && cnt[i][j][1] >= cnt[i][j][3]/2) {
+						ans += min(cnt[i][j][3]/2-1, cnt[i][j][1]-1);
+					}
+				}
+			//}
+			//cout << i << ' ' << j << ' ' << ans << '\n';
+		}
+	}
+	cout << ans << '\n';
 }
 
 int main() {
@@ -12,11 +110,11 @@ int main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	//cin >> t;
+	cin >> t;
 	while(t--) {
-		//cout << "Case #" << i << ": ";
+		cout << "Case #" << i << ": ";
 		solve();
-		//i++;
+		i++;
 	}
 	return 0;
 }

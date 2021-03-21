@@ -4,7 +4,18 @@ using namespace std;
 #define ll long long
 
 void solve() {
+	int n, k;
+	string s;
+	cin >> n >> k >> s;
+	
+	int t = 0;
+	for (int i = 0; i < n/2; i++) {
+		if (s[i] != s[n-i-1]) {
+			t++;
+		}
+	}
 
+	cout << abs(k-t) << '\n';
 }
 
 int main() {

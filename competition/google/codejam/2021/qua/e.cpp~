@@ -3,35 +3,41 @@ using namespace std;
 
 #define ll long long
 
-float ran() {
-	return ((float)rand())/float(RAND_MAX) * 6.00 - 3.00;
-}
-
 void solve() {
-	int p;
-	float player[100];
-	string ar[10001];
-	//for (int i = 0; i < 10000; i++) {
-		//cin >> ar[i];
-	//}
-
+	string ar[100];
 	for (int i = 0; i < 100; i++) {
-		player[i] = ran();
+		cin >> ar[i];
 	}
 
+	int cnt[100];
+	memset(cnt, 0, sizeof(cnt));
 	for (int i = 0; i < 100; i++) {
-		cout << player[i] << ' ';
+		for (int j = 0; j < 10000; j++) {
+			if (ar[i][j] == '1') {
+				cnt[i]++;
+			}
+		}
 	}
-	
+
+	int dd = 100000, ans = -1;
+	for (int i = 0; i < 100; i++) {
+		int ddd = abs(cnt[i]-5000);
+		if (ddd < dd) {
+			dd = ddd;
+			ans = i+1;
+		}
+	}
+	cout << ans << '\n';
 }
 
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
-	freopen("ein.txt", "r", stdin);
+	//freopen("ein.txt", "r", stdin);
+	//freopen("eout.txt", "w", stdout);
 
-	int t = 1, i = 1;
-	//cin >> t;
+	int t = 1, i = 1, p;
+	cin >> t >> p;
 	while(t--) {
 		cout << "Case #" << i << ": ";
 		solve();

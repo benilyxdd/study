@@ -3,17 +3,8 @@ using namespace std;
 
 #define ll long long
 
-class coin {
-	public:
-	int a, b;
-	coin(int a, int b) : a(a), b(b){}
-};
-
 void solve() {
-	int x, y;
-	cin >> x >> y;
-	coin a(x, y);
-	cout << a.a << ' ' << a.b << '\n';
+	
 }
 
 int main() {

@@ -4,11 +4,16 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	
+	string s;
+	while(getline(cin, s)) {
+		if (s == "Is it rated?") {
+			cout << "NO" << endl;
+		}
+	}
 }
 
 int main() {
-	ios::sync_with_stdio(0);
+	ios::sync_with_stdio(1);
 	cin.tie(0);
 
 	int t = 1, i = 1;
@@ -20,4 +25,5 @@ int main() {
 	}
 	return 0;
 }
+
 

@@ -1,4 +1,5 @@
 //https://www.geeksforgeeks.org/remove-array-end-element-maximize-sum-product//
+//NOT DONE
 #include <bits/stdc++.h>
 using namespace std;
 

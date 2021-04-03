@@ -4,27 +4,24 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int n, q;
 	string s;
-	cin >> n >> q >> s;
+	cin >> s;
+	int n = s.length(), q;
+	int pre[n+1];
+	memset(pre, 0, sizeof(pre));
+	for (int i = 0; i < n-1; i++) {
+		if (s[i] == s[i+1]) {
+			pre[i+1] = 1;
+		}
+	}
+	partial_sum(pre, pre+n, pre);
 
+	cin >> q;
 	for (int i = 0; i < q; i++) {
 		int a, b;
 		cin >> a >> b;
-		bool ok = 0;
-		for (int j = 0; j < a-1; j++) {
-			if (s[j] == s[a-1]) {
-				ok = 1;
-				break;
-			}
-		}
-		for (int j = b; j < n; j++) {
-			if (s[j] == s[b-1]) {
-				ok = 1;
-				break;
-			}
-		}
-		cout << (ok ? "YES" : "NO") << '\n';
+		b--, a--;
+		cout << pre[b] - pre[a] << '\n';
 	}
 }
 
@@ -33,7 +30,7 @@ int main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	cin >> t;
+	//cin >> t;
 	while(t--) {
 		//cout << "Case #" << i << ": ";
 		solve();

@@ -2,29 +2,29 @@
 using namespace std;
 
 #define ll long long
-int n, d, dp[101];
-string s;
-
-void f(int p) {
-	if (p >= n) 
-		return;
-
-	if (dp[p] != -1)
-		return dp[p];
-
-	int ans = 0;
-	for (int i = 1; i <= d; i++) {
-		if (s[p+i-1] == '1') {
-			f(p+i-1);
-		}
-	}
-	return dp[p] = ans;
-}
 
 void solve() {
-	memset(dp, -1, sizeof(dp));
+	int n, d;
+	string s;
 	cin >> n >> d >> s;
-	cout << dp[n-1];
+
+	int dp[n];
+	fill(dp, dp+n, 1e9);
+	dp[0] = 1;
+
+	for (int i = 1; i < n; i++) {
+		if (s[i] == '0') {
+			dp[i] = 0;
+		} else {
+			for (int j = i-d; j < i; j++) {
+				if (s[j] == '1') {
+					dp[i] = min(dp[i], dp[j]+1);
+				}
+			}
+		}
+	}
+
+	cout << (dp[n-1] == 1e9 ? -1 : dp[n-1]-1) << '\n';
 }
 
 int main() {

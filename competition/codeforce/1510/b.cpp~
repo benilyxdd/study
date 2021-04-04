@@ -4,13 +4,17 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int n;
-	cin >> n;
-	vector<int> ar(n);
-	for (int& x : ar) {
+	int n, d;
+	cin >> n >> d;
+	vector<string> ar(d);
+	for (string& x : ar) {
 		cin >> x;
 	}
-
+	cout << '\n';
+	sort(ar.begin(), ar.end());
+	for (string& x : ar) {
+		cout << x << '\n';
+	}
 }
 
 int main() {
@@ -18,7 +22,7 @@ int main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	cin >> t;
+	//cin >> t;
 	while(t--) {
 		//cout << "Case #" << i << ": ";
 		solve();

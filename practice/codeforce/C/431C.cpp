@@ -3,31 +3,25 @@ using namespace std;
 
 #define ll long long
 const int MOD = (int)1e9+7;
-const int mxN = (int)1e4;
-int n, k, d, dp[mxN];
-
-int path(int x) {
-	if (x == n)
-		return 1;
-	if (x > n)
-		return 0;
-	if (dp[x] != -1) 
-		return dp[x];
-	
-	int ans = 0;
-	for (int i = 1; i <= k; i++) {
-		ans += path(x+i);
-	}
-	return dp[x] = ans;
-}
 
 void solve() {
-	memset(dp, -1, sizeof(dp));
+	int n, k, d;
 	cin >> n >> k >> d;
-	cout << path(d);
-	for (int i = 0; i <= k; i++)
+
+	int dp[n+1];
+	dp[0] = 0;
+	
+	for (int i = 1; i <= n; i++) {
+		dp[i] = 1;
+		for (int j = max(0, i-k); j < i; j++) {
+			dp[i] += dp[j];
+		}
+	}
+	for (int i = 0; i <= n; i++) {
 		cout << dp[i] << ' ';
+	}
 	cout << '\n';
+	cout << dp[n] << '\n';
 }
 
 int main() {

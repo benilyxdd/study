@@ -6,8 +6,26 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-	for (int i = 0; i < n; i++) {
-		
+	vector<string> ans;
+	ans.push_back("0");
+	ans.push_back("1");
+	for (int i = 0; i < n-1; i++) {
+		int len = ans.size();
+		for (int j = len - 1; j >= 0; j--) {
+			ans.push_back(ans[j]);
+		}
+
+		len = ans.size();
+		for (int j = 0; j < len / 2; j++) {
+			ans[j].insert(0, "0");
+		}
+		for (int j = len / 2; j < len; j++) {
+			ans[j].insert(0, "1");
+		}
+	}
+
+	for (string& x : ans) {
+		cout << x << '\n';
 	}
 }
 

@@ -2,17 +2,38 @@
 using namespace std;
 
 #define ll long long
-const int mxX = (int)1e9+9, mxN = (int)2e5+5;
-int x, n, ar[mxN];
 
 void solve() {
+	int x, n;
 	cin >> x >> n;
-	for (int i = 0; i < n; i++)
-		cin >> ar[i];
-	
-	
-	for (int i = 1; i < n; i++) {
+	vector<int> ar(n);
+	for (int& in : ar) {
+		cin >> in;
+	}
 
+	set<int> s;
+	map<int, int> m;
+	s.insert(0);
+	s.insert(x);
+	m[x] = 1;
+
+	for (int i = 0; i < n; i++) {
+		auto it = s.lower_bound(ar[i]);
+
+		int r = *it;
+		it--;
+		int l = *it;
+
+		m[r-l]--;
+		if (!m[r-l]) {
+			m.erase(r-l);
+		}
+		
+		m[r-ar[i]]++;
+		m[ar[i]-l]++;
+
+		s.insert(ar[i]);
+		cout << ((--m.end()) -> first)  << ' ';
 	}
 }
 

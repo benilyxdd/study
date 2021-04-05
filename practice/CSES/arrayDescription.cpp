@@ -3,27 +3,29 @@ using namespace std;
 
 #define ll long long
 const int MOD = (int)1e9+7;
-const int mxN = (int)1e5+5;
-const int mxM = 100;
-int n, m;
-int a[mxN];
 
 void solve() {
-	cin >> n >> m;
-	for (int i = 0; i < n; i++) 
-		cin >> a[i];
-	
-	ll ans = 1;
-	for (int i = 0; i < n; i++) {
-		if (a[i] == 0) {
-			if (a[i-1] == 1 || a[i-1] == m) {
-				ans = (ans*2)%MOD;
-			}else {
-				ans = (ans*3)%MOD;
-			}
-		}
+	int n, k;
+	cin >> n >> k;
+	vector<int> ar(n);
+	for (int& x : ar) {
+		cin >> x;
 	}
-	cout << ans << "\n";
+
+	ll dp[n+1];
+	dp[0] = 1;
+	
+	for (int i = 1; i <= n; i++) {
+		if (ar[i-1] == 0) {
+			dp[i] = dp[i-1];
+		} else {
+			int cnt = 0;
+			
+
+		}
+
+	}	
+	cout << dp[n] << '\n';
 }
 
 int main() {

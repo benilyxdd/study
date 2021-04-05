@@ -6,8 +6,20 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
+	vector<int> ar(n);
+	for (int& x : ar) {
+		cin >> x;
+	}
+	sort(ar.begin(), ar.end());
+
+	set<int> s;
+	int dp[n+1][ar.back() * n + 1];
+	memset(dp, 0, sizeof(dp));
+
 	for (int i = 1; i <= n; i++) {
-		ll 
+		for (int j = 1; j <= ar.back() * n + 1; i++) {
+			 
+		}
 	}
 }
 

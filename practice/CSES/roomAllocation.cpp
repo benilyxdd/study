@@ -2,20 +2,16 @@
 using namespace std;
 
 #define ll long long
-string s;
 
 void solve() {
-	cin >> s;
-	int n = s.length();
-	int mx = 0;
-	for (int i = 0, j = 0; i < n; i++) {
-		while(s[i] == s[j]) {
-			j++;
-		}
-		int cnt = j-i;
-		mx = max(mx, cnt);
+	int n;
+	cin >> n;
+	array<int, 2> ar[n];
+	for (int i = 0; i < n; i++) {
+		cin >> ar[i][1] >> ar[i][0];
 	}
-	cout  << mx;
+	sort(ar, ar+n);
+	
 }
 
 int main() {

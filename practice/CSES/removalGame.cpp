@@ -2,21 +2,22 @@
 using namespace std;
 
 #define ll long long
-#define int ll
-const int mxN = (int)2e5+5;
-int n, ar[mxN], sum;
 
 void solve() {
+	int n;
 	cin >> n;
-	for (int i = 0; i < n-1; i++) {
-		cin >> ar[i];
-		sum += ar[i];
+	list<int> ar(n);
+	for (int& x : ar) {
+		cin >> x;
 	}
-	int x = n*(n+1)/2;
-	cout << x-sum;
+
+	ll ans = 0;
+	for (int i = 0; i < n; i++) {
+		int f = ar.front();
+	}
 }
 
-signed main() {
+int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 

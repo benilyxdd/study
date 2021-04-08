@@ -4,10 +4,22 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int n;
-	cin >> n;
-	cout << n << '\n';
-	cout << "FGDGDFG";
+	int n, d;
+	cin >> n >> d;
+	vector<int> ar(n);
+	for (int& x : ar) {
+		cin >> x;
+	}
+
+	int ans = 0;
+	for (int i = 0; i < n - 1; i++) {
+		if (ar[i] >= ar[i+1]) {
+			int x = (ar[i] - ar[i+1] + 1 + d - 1) / d;
+			ar[i+1] += x * d;
+			ans += x;
+		}
+	}
+	cout << ans << '\n';
 }
 
 int main() {

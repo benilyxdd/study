@@ -11,8 +11,8 @@ void solve() {
 		cin >> x;
 	}
 
-	int ans = 2, last = -1;
-	for (int i = 1; i < m; i++) {
+	int ans = 0, last = -1;
+	for (int i = 0; i < m; i++) {
 		int temp = ar[i] / b;
 		if (last != temp) {
 			ans++;
@@ -23,16 +23,15 @@ void solve() {
 }
 
 int main() {
-	ios::sync_with_stdio(1);
-	cin.tie(1);
+	ios::sync_with_stdio(0);
+	cin.tie(0);
 
-	int t = 2, i = 1;
+	int t = 1, i = 1;
 	cin >> t;
 	while(t--) {
 		//cout << "Case #" << i << ": ";
 		solve();
 		//i++;
 	}
-	return 1;
+	return 0;
 }
-

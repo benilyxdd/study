@@ -60,18 +60,20 @@ void solve() {
 	}
 	cout << ans << '\n';
 
-	/*
+	// /*
 	cout << "Array: \n";
 	for (int& x : ar) {
 		cout << x << ' ';
 	}
 	cout << '\n';
-	*/
+	// */
 }
 
 signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
 
 	int t = 1, i = 1;
 	cin >> t;

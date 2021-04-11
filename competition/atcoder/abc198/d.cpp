@@ -27,7 +27,13 @@ void solve() {
 
 	for (int i = 1; i < all; i++) {
 		string temp = to_string(i);
-		cout << temp << '\n';
+		if (temp.length() < s.size()) {
+			continue;
+		} else if (temp.length() == s.size()) {
+			temp.insert(0, "0");
+		}
+
+		
 	}
 }
 

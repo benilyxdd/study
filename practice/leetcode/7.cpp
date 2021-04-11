@@ -13,7 +13,8 @@ public:
         try {
             ans = stoi(a);
             return ans;
-        } catch(out_of_range) {
+        }
+        catch(out_of_range) {
             return 0;
         }
     }

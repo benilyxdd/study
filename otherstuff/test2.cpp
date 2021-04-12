@@ -7,19 +7,31 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-	int dp[n][n];
+
+	vector<vector<int>> go[n + 1];
+	vector<int> ar(n);
 	for (int i = 0; i < n; i++) {
-		dp[0][i] = i + 1;
-		dp[i][0] = i + 1;
+		ar[i] = i + 1;
 	}
 
-	for (int i = 1; i < n; i++) {
-		for (int j = 1; j < n; j++) {
-			dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+	do {
+		set<int> s;
+		for (int i = 1; i < n; i++) {
+			s.insert(abs(ar[i - 1] - ar[i]));
 		}
-	}
+		go[s.size()].push_back(ar);
+	} while (next_permutation(ar.begin(), ar.end()));
 
-	cout << dp[n - 1][n - 1] << '\n';
+	for (int i = 0; i <= n; i++) {
+		cout << i << '\n';
+		for (vector<int>& vec : go[i]) {
+			for (int& in : vec) {
+				cout << in << ' ';
+			}
+			cout << '\n';
+		}
+		cout << '\n';
+	}
 }
 
 signed main() {

@@ -1,6 +1,6 @@
 //https://leetcode.com/problems/sort-colors/
 
-// O(nlogn) - using stl library
+// O(n log n) - using stl library
 class Solution {
 public:
     void sortColors(vector<int>& nums) {

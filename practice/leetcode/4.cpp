@@ -1,6 +1,6 @@
 //https://leetcode.com/problems/median-of-two-sorted-arrays/
 
-// O(n + mlogm) - inserting everything in multiset and find median
+// O(n + m log m) - inserting everything in multiset and find median
 
 class Solution {
 public:

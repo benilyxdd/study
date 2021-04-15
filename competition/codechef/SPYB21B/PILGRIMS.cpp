@@ -74,7 +74,9 @@ void solve() {
 
 	vector<int> all;
 	for (int& go : special) {
-		all.push_back(energy_requried[go]);
+		if (go != 0) {
+			all.push_back(energy_requried[go]);
+		}
 	}
 
 	// for (int& go : all) {

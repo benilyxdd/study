@@ -4,19 +4,19 @@ using namespace std;
 #define ll long long
 #define int ll
 
-int findNext(int x, int far, vector<int>& mx) {
-	int lo = x, hi = far;
-	while (lo < hi) {
-		int mid = (lo + hi) / 2;
-		if (mx[mid] != 0) {
-			hi = mid - 1;
-		} else {
-			lo = mid + 1;
-		}
-	}
-	// cout << "lo: " << lo << '\n';
-	return lo;
-}
+// int findNext(int x, int far, vector<int>& mx) {
+// 	int lo = x, hi = far;
+// 	while (lo < hi) {
+// 		int mid = (lo + hi) / 2;
+// 		if (mx[mid] != 0) {
+// 			hi = mid - 1;
+// 		} else {
+// 			lo = mid + 1;
+// 		}
+// 	}
+// 	// cout << "lo: " << lo << '\n';
+// 	return lo;
+// }
 
 void solve() {
 	int n;

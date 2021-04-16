@@ -2,12 +2,29 @@
 using namespace std;
 
 #define ll long long
+#define int ll
 
 void solve() {
+	int n;
+	cin >> n;
+	vector<int> ar(n);
+	for (int& x : ar) {
+		cin >> x;
+	}
 
+	int dp[n][n];
+	for (int i = 0; i < n; i++) {
+		dp[i][0] = 0;
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 1; j < n; j++) {
+			
+		}
+	}
 }
 
-int main() {
+signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 

@@ -32,6 +32,7 @@ void solve() {
 		cout << z << ' ';
 	}
 	cout << '\n';
+	cout << "HI";
 }
 
 int main() {

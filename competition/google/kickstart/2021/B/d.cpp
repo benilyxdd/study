@@ -2,10 +2,8 @@
 using namespace std;
 
 #define ll long long
-#define int ll
-const int mxN = (int)5e4 + 4;
 
-void dfs(vector<vector<int>>& way, vector<int> adj[], vector<bool>& visited, int cur, int pre) {
+void dfs(vector<vector<int>>& way, vector<vector<int>>& adj, vector<bool>& visited, int cur, int pre) {
 	visited[cur] = true;
 	if (pre != -1) {
 		for (int& go : way[pre]) {
@@ -20,19 +18,19 @@ void dfs(vector<vector<int>>& way, vector<int> adj[], vector<bool>& visited, int
 	}
 }
 
-int gcd(int a, int b) {
+ll gcd(ll a, ll b) {
 	if (b == 0) {
 		return a;
 	}
 	return gcd(b, a % b);
 }
 
-int v_gcd(vector<int> vec) {
+ll v_gcd(vector<ll>& vec) {
 	int n = vec.size();
 	if (n == 0) {
 		return 0;
 	}
-	int res = vec[0];
+	ll res = vec[0];
 	for (int i = 1; i < n; i++) {
 		res = gcd(res, vec[i]);
 	}
@@ -42,28 +40,33 @@ int v_gcd(vector<int> vec) {
 void solve() {
 	int n, q;
 	cin >> n >> q;
-	// {load, charge}
-	vector<int> ar[mxN];
-	vector<int> road[n];
+	// [insert table]
+	vector<tuple<int, int, int, ll>> ar;
+	vector<vector<int>> road(n);
 
 	for (int i = 0; i < n - 1; i++) {
-		int x, y, l, a;
+		int x, y, l;
+		ll a;
 		cin >> x >> y >> l >> a;
 		x--, y--;
 		road[x].push_back(y);
 		road[y].push_back(x);
-		ar[x].push_back(y);
-		ar[x].push_back(l);
-		ar[x].push_back(a);
-		ar[y].push_back(x);
-		ar[y].push_back(l);
-		ar[y].push_back(a);
+		// [insert value to table]
+		ar.push_back({x, y, l, a});
 	}
 	vector<vector<int>> way(n);
 	vector<bool> visited(n, false);
 	dfs(way, road, visited, 0, -1);
 
+	// for (array<int, 4>& yo : ar) {
+	// 	for (int& yoo : yo) {
+	// 		cout << yoo << ' ';
+	// 	}
+	// 	cout << '\n';
+	// }
+
 	// cout << '\n';
+	// cout << "road:D \n";
 	// for (vector<int>& yo : way) {
 	// 	for (int& yoyo : yo) {
 	// 		cout << yoyo << ' ';
@@ -75,29 +78,30 @@ void solve() {
 		int c, j;
 		cin >> c >> j;
 		c--;
-		vector<int> g;
+		vector<ll> g;
 		int now = c, all = way[c].size();
 		for (int k = all - 1; k >= 0; k--) {
 			int next = way[c][k];
-			int mx_w, xd;
-			// for (auto& yo : ar[now]) {
-			// 	if (yo[0] == next) {
-
-			// 	}
-			// }
-			// for (auto& yo : ar) {
-			// 	if (yo.first == now && yo.second[0] == next) {
-			// 		mx_w = yo.second[1];
-			// 		xd = yo.second[2];
-			// 	}
-			// }
+			ll mx_w, xd;
+			// [insert check]
+			for (tuple<int, int, int, ll>& yo : ar) {
+				if ((get<0>(yo) == now && get<1>(yo) == next) || (get<0>(yo) == next && get<1>(yo) == now)) {
+					mx_w = get<2>(yo);
+					xd = get<3>(yo);
+				}
+			}
 			// cout << "MXW:" << mx_w << ' ';
 			if (mx_w <= j) {
 				g.push_back(xd);
 			}
 			now = next;
 		}
-		int ans = v_gcd(g);
+		// cout << "CHECK: \n";
+		// for (int& yo : g) {
+		// 	cout << yo << ' ';
+		// }
+		// cout << '\n';
+		ll ans = v_gcd(g);
 		cout << ans << ' ';
 	}
 	cout << '\n';
@@ -106,6 +110,8 @@ void solve() {
 signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
+	freopen("d_tc.txt", "r", stdin);
+	freopen("d_my.txt", "w", stdout);
 
 	int t = 1, i = 1;
 	cin >> t;

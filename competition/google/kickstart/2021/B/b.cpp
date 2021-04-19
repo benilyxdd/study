@@ -6,34 +6,57 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-	vector<int> ar(n);
-	for (int& x : ar) {
-		cin >> x;
+	vector<int> ar(n + 2, -1);
+	for (int i = 0; i < n; i++) {
+		cin >> ar[i];
 	}
-	int mx = 2, diff = ar[1] - ar[0], temp = 1;
+
+	vector<int> diff(n - 1);
 	for (int i = 1; i < n; i++) {
-		int cur = ar[i] - ar[i - 1];
-		if (diff != cur) {
-			temp = 1;
-			diff = cur;
-		}
-		bool chance = true;
-		vector<int> save = {-1, -1};
-		while ((ar[i] - ar[i - 1] == diff || chance) && i < n) {
-			if (ar[i] - ar[i - 1] != diff && chance) {
-				chance = false;
-				save = {ar[i], i};
-				ar[i] = ar[i - 1] - diff;
+		diff[i - 1] = ar[i] - ar[i - 1];
+	}
+
+	for (int& x : diff) {
+		cout << x << ' ';
+	}
+	cout << '\n';
+
+	int mx = 2, temp = 1;
+	for (int i = 1; i < n - 1; i++) {
+		if (diff[i] == diff[i - 1]) {
+			while (diff[i] == diff[i - 1] && i < n - 1) {
+				temp++, i++;
 			}
-			temp++, i++;
-		}
-		mx = max(mx, temp);
-		if (save[1] != -1) {
-			i = save[1];
-			ar[save[1]] = save[0];
+			mx = max(temp, mx);
+			cout << "I: " << i << '\n';
+			int save = ar[i + 1];
+			ar[i + 1] = ar[i] + diff[i - 1];
+			if (i + 1 != n - 1 && ar[i + 1] - ar[i + 2] == diff[i - 1]) {
+				temp++;
+				mx = max(mx, temp);
+				ar[i + 1] = save;
+			} else {
+				temp = 1;
+			}
+			i += 2;
+		}  else {
+			int save = ar[i + 1];
+			ar[i + 1] = ar[i] + diff[i - 1];
+			if (i + 1 != n - 1 && ar[i + 1] - ar[i + 2] == diff[i - 1]) {
+				temp++;
+				mx = max(mx, temp);
+				ar[i + 1] = save;
+			} else {
+				temp = 1;
+			}
+			i += 2;
 		}
 	}
-	cout << mx << '\n';
+	for (int& x : ar) {
+		cout << x << ' ';
+	}
+	cout << '\n';
+	cout << mx + 1 << '\n';
 }
 
 int main() {

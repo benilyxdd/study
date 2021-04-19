@@ -5,6 +5,8 @@
         "array": "cpp",
         "string_view": "cpp",
         "regex": "cpp",
-        "streambuf": "cpp"
+        "streambuf": "cpp",
+        "vector": "cpp",
+        "__tuple": "cpp"
     }
 }

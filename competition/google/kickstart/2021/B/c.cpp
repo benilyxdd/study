@@ -2,12 +2,58 @@
 using namespace std;
 
 #define ll long long
+#define int ll
 
-void solve() {
-
+int findNext(int n) {
+	while (true) {
+		bool ok = true;
+		for (int i = 2; i * i <= n; i++) {
+			if (n % i == 0) {
+				ok = false;
+			}
+		}
+		if (!ok) {
+			n++;
+		} else {
+			return n;
+		}
+	}
 }
 
-int main() {
+int findPre(int n) {
+	while (true) {
+		bool ok = true;
+		for (int i = 2; i * i <= n; i++) {
+			if (n % i == 0) {
+				ok = false;
+			}
+		}
+		if (!ok) {
+			n--;
+		} else {
+			return n;
+		}
+	}
+}
+
+void solve() {
+	int n;
+	cin >> n;
+
+	int x = sqrt(n);
+	int hi = findNext(x + 1);
+	int lo = findPre(x);
+
+	if (hi * lo > n) {
+		hi = findPre(x - 1);
+	}
+	if (hi == lo) {
+		hi = findPre(hi - 1);
+	}
+	cout << hi * lo << '\n';
+}
+
+signed main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 

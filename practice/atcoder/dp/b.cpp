@@ -1,38 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define ll long long
-const int mxN = (int)2e5+5;
-int n, k, ar[mxN];
-vector<int> dp(mxN, (int)1e9);
-
 void solve() {
-	cin >> n >> k;
-	for (int i = 0; i < n; i++)
-		cin >> ar[i];
+    int n, k;
+    cin >> n >> k;
+    vector<int> ar(n);
+    for (int& x : ar) {
+        cin >> x;
+    }
 
-	dp[0] = 0;
-	for (int i = 0; i < n; i++) {
-		for (int j = i+1; j <= k+i; j++) {
-			if (j < n) {
-				dp[j] = min(dp[j], dp[i]+abs(ar[j]-ar[i]));
-			}
-		}
-	}
-	cout << dp[n-1];
+    vector<int> dp(n, (int)1e9);
+    dp[0] = 0;
+    for (int i = 1; i < n; i++) {
+        for (int j = 1; j <= k; j++) {
+            if (j <= i) {
+                dp[i] = min(dp[i], dp[i - j] + abs(ar[i] - ar[i - j]));
+            }
+        }
+    }
+    cout << dp[n - 1];
 }
 
 int main() {
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-
-	int t = 1, i = 1;
-	//cin >> t;
-	while(t--) {
-		//cout << "Case #" << i << ": ";
-		solve();
-		//i++;
-	}
-	return 0;
+    solve();
+    return 0;
 }
-

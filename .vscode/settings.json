@@ -7,6 +7,7 @@
         "regex": "cpp",
         "streambuf": "cpp",
         "vector": "cpp",
-        "__tuple": "cpp"
+        "__tuple": "cpp",
+        "algorithm": "cpp"
     }
 }

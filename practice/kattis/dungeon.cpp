@@ -8,7 +8,16 @@ int dr[8] = {-1, 1, 0, 0, -1, -1, 1, 1};
 int dc[8] = {0, 0, 1, -1, -1, 1, -1, 1};
 
 void solve() {
-
+	int r, n, m;
+	cin >> r >> n >> m;
+	char ar[r][n][m];
+	for (int i = 0; i < r; i++) {
+		for (int j = 0; j < n; j++) {
+			for (int k = 0; k < m; k++) {
+				cin >> ar[i][j][k];
+			}
+		}
+	}
 }
 
 int main() {
@@ -16,7 +25,7 @@ int main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	//cin >> t;
+	cin >> t;
 	while(t--) {
 		//cout << "Case #" << i << ": ";
 		solve();

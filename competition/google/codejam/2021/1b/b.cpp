@@ -4,6 +4,12 @@ using namespace std;
 #define ll long long
 
 void solve() {
+	int n, a, b;
+	cin >> n >> a >> b;
+	vector<int> ar(n);
+	for (int& x : ar) {
+		cin >> x;
+	}
 	
 }
 

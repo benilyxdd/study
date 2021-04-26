@@ -4,7 +4,7 @@ using namespace std;
 #define ll long long
 #define int ll
 
-int findNext(int n) {
+int findNext(int n, int add) {
 	while (true) {
 		bool ok = true;
 		for (int i = 2; i * i <= n; i++) {
@@ -13,23 +13,7 @@ int findNext(int n) {
 			}
 		}
 		if (!ok) {
-			n++;
-		} else {
-			return n;
-		}
-	}
-}
-
-int findPre(int n) {
-	while (true) {
-		bool ok = true;
-		for (int i = 2; i * i <= n; i++) {
-			if (n % i == 0) {
-				ok = false;
-			}
-		}
-		if (!ok) {
-			n--;
+			n += add;
 		} else {
 			return n;
 		}
@@ -41,14 +25,14 @@ void solve() {
 	cin >> n;
 
 	int x = sqrt(n);
-	int hi = findNext(x + 1);
-	int lo = findPre(x);
+	int hi = findNext(x + 1, 1);
+	int lo = findNext(x, -1);
 
 	if (hi * lo > n) {
-		hi = findPre(x - 1);
+		hi = findNext(x - 1, -1);
 	}
 	if (hi == lo) {
-		hi = findPre(hi - 1);
+		hi = findNext(hi - 1, -1);
 	}
 	cout << hi * lo << '\n';
 }

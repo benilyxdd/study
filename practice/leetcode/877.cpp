@@ -27,3 +27,11 @@ public:
         return dp[0][n - 1][0] > dp[0][n - 1][1];
     }
 };
+
+// O(1) - alice can always take all even piles / odd piles
+class Solution {
+public:
+    bool stoneGame(vector<int>& piles) {
+        return true;
+    }
+};

@@ -8,6 +8,7 @@
         "streambuf": "cpp",
         "vector": "cpp",
         "__tuple": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "cstring": "cpp"
     }
 }

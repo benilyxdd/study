@@ -1,15 +1,31 @@
-#include <iostream>
-#include <vector>
-#include <string.h>
-#include <assert.h>
-using namespace std;
+//https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 
+// O(n) - maintains smallest price 
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int mx = 0;
+        int last = INT_MAX;
+        
+        for (int& price : prices) {
+            if (price < last) {
+                last = price;
+            } else {
+                mx = max(mx, price - last);
+            }
+        }
+        return mx;
+    }
+};
+
+// O(n * k * 2) - n -> how many day, k -> 1 in this question
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
         int n = prices.size();
-        int k = 2;
+        int k = 1;
 
+        // can use normal array to replace vector -> int dp[n + 1][k + 1][2];
         vector<vector<vector<int>>> dp(n + 1, vector<vector<int>>(k + 1, vector<int>(2)));
         for (int i = 0; i <= n; i++) {
             dp[i][0][0] = 0;
@@ -26,21 +42,6 @@ public:
                 dp[i][j][1] = max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i - 1]);
             }
         }
-
-        // for (int i = 0; i <= n; i++) {
-        //     for (int j = 0; j < 3; j++) {
-        //         cout << dp[i][j][0] << ' ' << dp[i][j][1] << '\\';
-        //     }
-        //     cout << '\n';
-        // }
-        return dp[n][2][0];
+        return dp[n][k][0];
     }
 };
-
-int main() {
-    Solution sol;
-    pair<vector<int>, int> price1 = {{3, 3, 5, 0, 0, 3, 1, 4}, 6};
-    pair<vector<int>, int> price2 = {{1, 2, 3, 4, 5}, 4};
-    assert(sol.maxProfit(price1.first) == price1.second);
-    assert(sol.maxProfit(price2.first) == price2.second);
-}

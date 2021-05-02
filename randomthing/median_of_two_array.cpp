@@ -1,10 +1,10 @@
-//https://leetcode.com/problems/median-of-two-sorted-arrays/
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
 
-// O(log (min(n, m))) - binary search
-class Solution {
-public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        int n = nums1.size();
+double cal(vector<int>& nums1, vector<int>& nums2) {
+    int n = nums1.size();
         int m = nums2.size();
         if (n > m) {
             swap(nums1, nums2);
@@ -34,32 +34,13 @@ public:
             }
         }
         return (double)0;
-    }
-};
+}
 
-// O(n + m log m) - inserting everything in multiset and find median
-
-class Solution {
-public:
-    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        multiset<int> mt(nums1.begin(), nums1.end());
-        
-        for (int& x : nums2) {
-            mt.insert(x);
-        }
-        int n = mt.size();
-        
-        auto it = mt.cbegin();
-        advance(it, n / 2);
-        
-        double median = 0;
-        if (n % 2 == 0) {
-            auto it2 = it--;
-            median = (double) (*it + *it2) / 2;
-        } else {
-            median = *it;
-        }
-        
-        return median;
-    }
-};
+int main() {
+    vector<int> a = {1, 3};
+    vector<int> b = {2};
+    vector<int> c = {23, 26, 31, 35};
+    vector<int> d = {3, 5, 7, 9, 11, 16};
+    cout << cal(a, b) << '\n';
+    cout << cal(c, d) << '\n';
+}

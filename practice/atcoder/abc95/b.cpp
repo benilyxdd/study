@@ -4,15 +4,18 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int n;
-	cin >> n;
-	vector<vector<int>> road(n, vector<int>());
-	for (int i = 0; i < n; i++) {
-		int a, b;
-		cin >> a >> b;
-		road[a].push_back(b);
+	int n, x;
+	cin >> n >> x;
+	vector<int> ar(n);
+	for (int& z : ar) {
+		cin >> z;
+		x -= z;
 	}
-	
+	sort(ar.begin(), ar.end());
+
+	int cnt = n;
+	cnt += (x / ar[0]);
+	cout << cnt;
 }
 
 int main() {

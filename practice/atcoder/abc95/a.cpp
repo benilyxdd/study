@@ -4,15 +4,13 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int n;
-	cin >> n;
-	vector<vector<int>> road(n, vector<int>());
-	for (int i = 0; i < n; i++) {
-		int a, b;
-		cin >> a >> b;
-		road[a].push_back(b);
+	string s;
+	cin >> s;
+	int cnt = 700;
+	for (int i = 0; i < 3; i++) {
+		cnt += (s[i] == 'o' ? 100 : 0);
 	}
-	
+	cout << cnt;
 }
 
 int main() {

@@ -4,7 +4,22 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	
+	int n, m, x;
+	cin >> n >> m >> x;
+	vector<int> ar(n, 0);
+	for (int i = 0; i < m; i++) {
+		int a;
+		cin >> a;
+		ar[a] = 1;
+	}
+	int left = 0, right = 0;
+	for (int i = 0; i < x; i++) {
+		left += ar[i];
+	}
+	for (int i = x; i < n; i++) {
+		right += ar[i];
+	}
+	cout << min(left, right);
 }
 
 int main() {

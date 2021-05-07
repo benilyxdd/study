@@ -4,15 +4,12 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int n;
-	cin >> n;
-	vector<vector<int>> road(n, vector<int>());
+	ll n, c;
+	cin >> n >> c;
+	ll mx = 0, now = 0;
 	for (int i = 0; i < n; i++) {
-		int a, b;
-		cin >> a >> b;
-		road[a].push_back(b);
+		
 	}
-	
 }
 
 int main() {

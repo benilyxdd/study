@@ -8,19 +8,24 @@ void solve() {
 	string s;
 	cin >> n >> s;
 
-	int longest = 0, start = -1;
+	vector<int> sheep;
 	for (int i = 0; i < n; i++) {
 		if (s[i] == '*') {
-			int j = i;
-			while (s[j + 1] == '*' && j < n - 1) {
-				j++;
-			}
-			int diff = j - i + 1;
-			if (diff > longest) {
-				
-			}
+			sheep.push_back(i);
 		}
 	}
+
+	int len = (int)sheep.size();
+	for (int i = 0; i < len; i++) {
+		sheep[i] -= i;
+	}
+	sort(sheep.begin(), sheep.end());
+	int median = sheep[len / 2];
+	ll ans = 0;
+	for (int& x : sheep) {
+		ans += (ll)abs(median - x);
+	}
+	cout << ans << '\n';
 }
 
 int main() {

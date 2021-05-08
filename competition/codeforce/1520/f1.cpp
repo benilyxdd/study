@@ -6,48 +6,28 @@ int ask(int l, int r) {
 
 	int res;
 	cin >> res;
-	return res;
+	return r - l + 1 - res;
 }
 
 int main() {
-	int n, t, k;
-	cin >> n >> t >> k;
+	int n, t;
+	cin >> n >> t;
 	assert(t == 1);
-	int lo = 1, hi = n, pre = 0;
-	bool ok = false;
-	while (lo < hi) {
-		int mid = lo + (hi - lo) / 2;
-		int get = ask(lo, mid);
-		int zero = mid - lo - get + 1;
-		pre += zero;
 
-		if (!ok) {
-			if (pre < k) {
-				lo = mid + 1;
+	for (int i = 0; i < t; i++) {
+		int k;
+		cin >> k;
+		int lo = 0, hi = n - 1;
+		while (lo < hi) {
+			int mid = lo + (hi - lo + 1) / 2;
+			int get = ask(1, mid);
+			if (get < k) {
+				lo = mid;
 			} else {
-				hi = mid;
+				hi = mid - 1;
 			}
 		}
-		if (pre == k) {
-			ok = true;
-			break;
-		}
+		cout << "! " << lo + 1 << endl;
+		exit(0);
 	}
-
-	int pre2 = 0;
-	while (lo < hi) {
-		int mid = lo + (hi - lo) / 2;
-		int get = ask(lo, mid);
-		int zero = mid - lo - get + 1;
-
-		int yo = pre - zero;
-		if (yo < k) {
-			lo = mid + 1;
-		} else {
-			hi = mid;
-		}
-	}
-	cout << "! " << lo << endl;
-
-	exit(0);
 }

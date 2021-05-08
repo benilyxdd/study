@@ -4,7 +4,10 @@ using namespace std;
 #define ll long long
 
 void solve() {
-
+	string s;
+	int k;
+	cin >> s >> k;
+	
 }
 
 int main() {

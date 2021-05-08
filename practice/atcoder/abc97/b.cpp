@@ -6,23 +6,17 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-	for (int i = n; i >= 1; i--) {
-		bool first = false, ok = true;
-		int t = i;
-		for (int j = 2; j * j <= n; j++) {
-			if (t % j == 0) {
-				if (!first) {
-					while (t % j == 0) {
-						t /= j;
-					}
-					first = true;
-				} else {
-					ok = false;
-					break;
-				}
-			}
+	vector<bool> ok(n + 1, false);
+	ok[1] = 1;
+	for (int i = 2; i * i <= n; i++) {
+		int x = i * i;
+		while (x <= n) {
+			ok[x] = true;
+			x *= i;
 		}
-		if (ok && t == 1) {
+	}
+	for (int i = n; i >= 1; i--) {
+		if (ok[i]) {
 			cout << i;
 			return;
 		}

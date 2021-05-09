@@ -6,11 +6,7 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-	vector<int> ar(n);
-	for (int &x : ar) {
-		cin >> x;
-	}
-	
+	cout << (n > 999 ? "ABD" : "ABC");
 }
 
 int main() {

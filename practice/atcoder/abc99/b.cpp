@@ -4,13 +4,9 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int n;
-	cin >> n;
-	vector<int> ar(n);
-	for (int &x : ar) {
-		cin >> x;
-	}
-	
+	int a, b;
+	cin >> a >> b;
+	cout << (b - a) * (b - a + 1) / 2 - b;
 }
 
 int main() {

@@ -3,30 +3,31 @@ using namespace std;
 
 #define ll long long
 
-int cal(vector<int>& a, vector<int>& b) {
-	int cnt = 0;
-	for (int i = 0; i < 128; i++) {
-		if (a[i] > 0 && b[i] > 0) {
-			cnt++;
-		}
-	}
-	return cnt;
-}
-
 void solve() {
 	int n;
 	string s;
 	cin >> n >> s;
-	vector<int> a(128, 0), b(128, 0);
+
+	vector<int> cnt(26, 0), cnt2(26, 0);
 	for (char& ch : s) {
-		b[ch]++;
+		cnt2[ch - 'a']++;
 	}
+
+	auto check = [&](vector<int> &a, vector<int> &b) {
+		int cnt = 0;
+		for (int i = 0; i < 26; i++) {
+			if (a[i] > 0 && b[i] > 0) {
+				cnt++;
+			}
+		}
+		return cnt;
+	};
+
 	int mx = 0;
 	for (int i = 0; i < n - 1; i++) {
-		a[s[i]]++;
-		b[s[i]]--;
-		int get = cal(a, b);
-		mx = max(get, mx);
+		cnt[s[i] - 'a']++;
+		cnt2[s[i] - 'a']--;
+		mx = max(mx, check(cnt, cnt2));
 	}
 	cout << mx;
 }

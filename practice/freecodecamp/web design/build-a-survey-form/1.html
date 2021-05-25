@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <link href = "1.css" rel = "stylesheet" type = "text/css">
+
+    <body>
+        <div id = "welcoming-section"> 
+            <h1 id = "title">Survey From</h1>
+            <p id = "description">This survry does nothing but please finish it.</p>
+        </div>
+
+        <fieldset id = "survey-form-section">
+            <form id = "survey-form">
+                    <label id = "name-label" for = "name">Your Name: </label>
+                    <input type = "text" id = "name" name = "email" placeholder = "Eg: Chan Tai Man">
+                    <br><br>
+                    <label id = "email-label" for = "email">Your Email:</label>
+                    <input type = "email" id = "email" name = "email" placeholder = "Eg: chantaiman@gmail.com">
+                    <br><br>
+                    <label id = "number-label" for = "number">Enter a number:</label>
+                    <input type = "number" id = "number" name = "number" min = "1" max = "100" placeholder = "1 - 100">
+
+                    <br><br>
+                    <label id = "dropdown-label" for = "dropdown">Your sex: </label>
+                    <select id = "dropdown">
+                        <option value = "male">Male</option>
+                        <option value = "female">Female</option>
+                        <option value = "secret">Prefer not to say</option>
+                    </select>
+                <br><br>
+
+                <legend id = "radio-button-label" for = "radio-buttons">How old are you?</legend>
+                <input type = "radio" name = "radio-buttons" value = "lower18">Lower 18
+                <input type = "radio" name = "radio-buttons" value = "18">I am 18
+                <input type = "radio" name = "radio-buttons" value = "over18">Over 18
+
+                <br><br>
+                <legend id = "checkbox-label" for = "checkboxs">Which of the following food you like?</legend>
+                <input type = "checkbox" name = "checkboxs" value = "chocolate">Chocolate
+                <input type = "checkbox" name = "checkboxs" value = "milk">Milk
+                <input type = "checkbox" name = "checkboxs" value = "peanut">Peanut
+
+                <br><br>
+                <input id = "submit" type = "submit" value = "SUBMITTTTTTT">
+
+            </form>
+        </fieldset>
+    </body>
+</html>

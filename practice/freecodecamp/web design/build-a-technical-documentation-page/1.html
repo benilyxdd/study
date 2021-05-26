@@ -4,11 +4,56 @@
 
     <body>
         <main id = "main-doc">
-            <section class = "main-section"></section>
-            <section class = "main-section"></section>
-            <section class = "main-section"></section>
-            <section class = "main-section"></section>
-            <section class = "main-section"></section>
+            <header id = "main-header">C++ Library &lsaquo;algorithm&rsaquo;</header><br>
+
+            <nav id = "navbar">
+                <h4>A few useful function from C++ library</h4>
+                <ul>
+                    <li><a class = "nav-link" href = "#all_of">all_of</a></li>
+                    <li><a class = "nav-link" href = "#any_of">any_of</a></li>
+                    <li><a class = "nav-link" href = "#none_of">none_of</a></li>
+                    <li><a class = "nav-link" href = "#for_each">for_each</a></li>
+                    <li><a class = "nav-link" href = "#find">find</a></li>
+                </ul>
+            </nav>
+            
+            <div id = "content">
+                <section class = "main-section" id = "all_of">
+                    <header>std::all_of</header>
+                    <p>Test condition on all elements in range</p>
+                    <p>Returns true if pred returns true for all the elements in the range [first,last) or if the range is empty,   and false otherwise.</p>
+                    <code>std::all_of(foo.begin(), foo.end(), [](int i) {return i % 2;})</code>
+                </section><br><br>
+
+                <section class = "main-section" id = "any_of">
+                    <header>std::any_of</header>
+                    <p>Test if any element in range fulfills condition</p>
+                    <p>Returns true if pred returns true for any of the elements in the range [first,last), and false otherwise. If     [first,last) is an empty range, the function returns false.</p>   
+                    <code>std::any_of(foo.begin(), foo.end(), [](int i) {return i == 0;})</code> 
+                </section><br><br>
+
+                <section class = "main-section" id = "none_of">
+                    <header>std::none_of</header>
+                    <p>Test if no elements fulfill condition</p>
+                    <p>Returns true if pred returns false for all the elements in the range [first,last) or if the range is empty,  and false otherwise.</p>
+                    <code>std::none_of(foo.begin(), foo.end(), [](int i) {return i == 0;})</code>
+                </section><br><br>
+
+                <section class = "main-section" id = "for_each">
+                    <header>std::for_each</header>
+                    <p>Apply function to range</p>
+                    <p>Applies function fn to each of the elements in the range [first,last).</p>    
+                    <code>for_each (myvector.begin(), myvector.end(), [](int i) {cout &lsaquo;&lsaquo; i &lsaquo;&lsaquo; ' '})</code>
+                </section><br><br>
+            </div>
+
+            <section class = "main-section" id = "find">
+                <header>std::find</header>
+                <p>Find value in range</p>
+                <p>Returns an iterator to the first element in the range [first,last) that compares equal to val. If no such element is found, the function returns last. The function uses operator== to compare the individual elements to val.</p>
+                <code>vector&lsaquo;int&rsaquo;::iterator it = find (myvector.begin(), myvector.end(), 30);</code>   
+            </section><br><br>
+
         </main>
     </body>
 </html>

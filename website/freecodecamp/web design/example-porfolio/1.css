@@ -2,7 +2,7 @@
 
 :root {
     --main-white: #f0f0f0;
-    --main-red: #be3144;
+    --main-red: #da0c27;
     --main-blue: #45567d;
     --main-gray: #303841;
 }
@@ -60,17 +60,11 @@ html {
     }
 }
 
-
-/* 980px / 16px = 61.25em */
-
 @media (max-width: 61.25em) {
     html {
         font-size: 58%;
     }
 }
-
-
-/* 460px / 16px = 28.75em */
 
 @media (max-width: 28.75em) {
     html {

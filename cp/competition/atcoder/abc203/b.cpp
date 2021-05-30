@@ -4,7 +4,15 @@ using namespace std;
 #define ll long long
 
 void solve() {
-
+	int sum = 0;
+	int n, k;
+	cin >> n >> k;
+	for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= k; j++) {
+			sum += i * 100 + j;
+		}
+	}
+	cout << sum;
 }
 
 int main() {

@@ -4,7 +4,16 @@ using namespace std;
 #define ll long long
 
 void solve() {
+	int n, k;
+	cin >> n >> k;
+	vector<vector<int>> ar(n, vector<int>(n));
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			cin >> ar[i][j];
+		}
+	}
 
+	int tar = k * k / 2 + 1;
 }
 
 int main() {

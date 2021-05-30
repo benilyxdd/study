@@ -4,7 +4,23 @@ using namespace std;
 #define ll long long
 
 void solve() {
-
+	int a, b, c;
+	cin >> a >> b >> c;
+	if (a != b && b != c && a != c) {
+		cout << 0;
+		return;
+	}
+	if (a == b && b == c) {
+		cout << a;
+		return;
+	}
+	if (a == b) {
+		cout << c;
+	} else if (b == c) {
+		cout << a;
+	} else if (a == c) {
+		cout << b;
+	}
 }
 
 int main() {

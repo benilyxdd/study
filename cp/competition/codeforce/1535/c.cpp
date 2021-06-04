@@ -4,7 +4,9 @@ using namespace std;
 #define ll long long
 
 void solve() {
-
+	string s;
+	cin >> s;
+	
 }
 
 int main() {
@@ -12,7 +14,7 @@ int main() {
 	cin.tie(0);
 
 	int t = 1, i = 1;
-	//cin >> t;
+	cin >> t;
 	while(t--) {
 		//cout << "Case #" << i << ": ";
 		solve();

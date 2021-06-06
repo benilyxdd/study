@@ -1,2 +1,2 @@
-# cp
-just cp things
+# study 
+just study thing

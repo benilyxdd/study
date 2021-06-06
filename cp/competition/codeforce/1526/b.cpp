@@ -2,26 +2,23 @@
 using namespace std;
 
 #define ll long long
-vector<int> tc = {111111111, 11111111, 1111111, 111111, 11111, 1111, 111, 11};
 
 void solve() {
 	int n;
 	cin >> n;
-	bool ok = false;
-	for (int &x : tc) {
-		if (n % x == 0) {
-			ok = true;
-			break;
-		}
-	}
-	while (n > 10) {
-		for (int &x : tc) {
-			if (x >= n) {
-				n -= x;
+	
+	if (n > 1099) { // chickent McNugget Theorem (11, 111);
+		cout << "YES\n";
+	} else {
+		for (int i = 0; i < 11; i++) {
+			int x = 111 * i;
+			if ((n - x) % 11 == 0 && x <= n) {
+				cout << "YES\n";
+				return;
 			}
 		}
+		cout << "NO\n";
 	}
-	cout << (ok || n == 0 ? "YES" : "NO") << '\n';
 }
 
 int main() {

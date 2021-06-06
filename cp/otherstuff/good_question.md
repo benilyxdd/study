@@ -2,3 +2,4 @@
 
 # math
 - [CF 1526B - I Hate 1111](https://codeforces.com/contest/1526/problem/B)
+    Chicken McNugget Theorem

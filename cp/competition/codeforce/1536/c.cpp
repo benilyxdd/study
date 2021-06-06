@@ -8,19 +8,26 @@ void solve() {
 	string s;
 	cin >> n >> s;
 
-	// cal prefix
-	vector<array<int, 2>> prefix(n, array<int, 2>());
-	prefix[0][0] = (s[0] == 'D');
-	prefix[0][1] = (s[0] == 'K');
-
-	for (int i = 1; i < n; i++) {
-		prefix[i][0] = prefix[i - 1][0] + (s[i] == 'D');
-		prefix[i][1] = prefix[i - 1][1] + (s[i] == 'K');
-	}
-
+	map<array<int, 2>, int> m;
+	int d = 0, k = 0;
 	for (int i = 0; i < n; i++) {
-		
+		d += (s[i] == 'D');
+		k += (s[i] == 'K');
+
+		array<int, 2> ar;
+		if (d == 0) {
+			ar = {0, 1};
+		} else if (k == 0) {
+			ar = {1, 0};
+		} else {
+			int gcd = __gcd(d, k);
+			ar = {d / gcd, k / gcd};
+		}
+
+		m[ar]++;
+		cout << m[ar] << ' ';
 	}
+	cout << '\n';
 }
 
 int main() {

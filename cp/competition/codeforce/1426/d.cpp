@@ -10,6 +10,21 @@ void solve() {
 	for (int &x : ar) {
 		cin >> x;
 	}
+
+	ll ans = 0, cur = 0;
+	set<ll> s = {0};
+	for (int i = 0; i < n; i++) {
+		cur += (ll)ar[i];
+		if (s.find(cur) != s.end()) {
+			ans++;
+			s.clear();
+			s.insert(0);
+			cur = ar[i];
+		}
+		s.insert(cur);
+	}
+
+	cout << ans << '\n';
 }
 
 int main() {

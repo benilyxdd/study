@@ -5,43 +5,31 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-	vector<int> v;
-	int a = 0, b = 0;
-	int pos = 0;
-	for (int i = 0; i < n; i++) {
-		int x;
+	vector<int> ar(n);
+	for (int &x : ar) {
 		cin >> x;
-		v.push_back(x);
 	}
-	int sum = 0;
-	for (int i = 0; i < n; i++) {
-		if (i % 2) {
-			sum -= v[i];
-		} else {
-			sum += v[i];
+
+	vector<int> cnt(2, 0);
+	for (int &x : ar) {
+		cnt[0] += (x == 0);
+		cnt[1] += (x == 1);
+	}
+
+	if (cnt[0] >= cnt[1]) {
+		cout << cnt[0] << '\n';
+		for (int i = 0; i < cnt[0]; i++) {
+			cout << 0 << ' ';
 		}
-	}
-	
-	while(sum != 0) {
-		auto it = find(v.rbegin(), v.rend(), 1);
-		v.erase(it);
-		sum = 0;
-		for (int i = 0; i < n; i++) {
-			if (i % 2) {
-				sum -= v[i];
-			} else {
-				sum += v[i];
-			}
+		cout << '\n';
+	} else {
+		int temp = (cnt[1] & 1 ? --cnt[1] : cnt[1]);
+		cout << temp << '\n';
+		for (int i = 0; i < temp; i++) {
+			cout << 1 << ' ';
 		}
+		cout << '\n';
 	}
-
-	cout << v.size() << "\n";
-	for (auto x : v) {
-		cout << x << " ";
-	}
-	cout << "\n";
-
-
 }
 
 int main() {

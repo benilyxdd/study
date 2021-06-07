@@ -5,24 +5,30 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int a, b, c;
-	cin >> a >> b;
-	vector<int> v;
-	for (int i = 0; i < a; i++) {
-		cin >> c;
-		v.push_back(c);
+	int x, y;
+	cin >> x >> y;
+	vector<int> ar(x);
+	for (int &x : ar) {
+		cin >> x;
 	}
 
-	int first = v[0];
-	cout << 1 << " ";
-	for (int i = 1; i < a; i++) {
-		if (v[i] + first != b) {
-			cout << 1 << " ";
+	vector<int> pos(x, -1);
+	bool ok = 1;
+	for (int i = 0; i < x; i++) {
+		if (y % 2 == 0 && ar[i] == y / 2) {
+			pos[i] = ok;
+			ok ^= 1;
+		} else if (ar[i] * 2 < y) {
+			pos[i] = 0;
 		} else {
-			cout << 0 << " ";
+			pos[i] = 1;
 		}
 	}
-	cout << "\n";
+
+	for (int &x : pos) {
+		cout << x << ' ';
+	}
+	cout << '\n';
 }
 
 int main() {

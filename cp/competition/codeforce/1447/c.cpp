@@ -4,49 +4,51 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int n, cnt = 0;
-	ll w, sum = 0;
+	int n;
+	ll w;
 	cin >> n >> w;
-	vector<int> a(n);
+	vector<array<int, 2>> ar(n);
 	for (int i = 0; i < n; i++) {
-		cin >> a[i];
-		sum += a[i];
-		if (a[i] > w) {
-			cnt++;
+		cin >> ar[i][0];
+		ar[i][1] = i;
+	}
+	
+	ll tar = (w + 2LL - 1LL) / 2LL;
+
+	sort(ar.begin(), ar.end());
+	vector<array<int, 2>> search_array;
+	for (array<int, 2> &x : ar) {
+		if (x[0] >= tar && x[0] <= w) {
+			cout << 1 << '\n'
+				 << x[1] + 1 << '\n';
+			return;
+		}
+		if (x[0] < tar) {
+			search_array.push_back(x);
 		}
 	}
-	if (cnt == n || sum < w/2) {
-		cout << -1 << "\n";
-	} else {
-		bool x = false;
-		for (int i = 0; i < n; i++) {
-			if (a[i] >= w/2 && a[i] < w) {
-				cout << 1 << "\n";
-				cout << i+1 << "\n";
-				x = true;
-				return;
-			}
-		}
-		if (!x) {
-			ll res = 0;
-			vector<ll> pos;
-			for (ll i = 0; i < n; i++) {
-				res += a[i];
-				pos.push_back(i);
-				if (res > w) {
-					res -= a[i];
-					pos.pop_back();
-				} else if (res > w/2 && res <= w) {
-					break;
-				}
-			}
-			cout << pos.size() << "\n";
-			for (ll& xd : pos) {
-				cout << xd+1 << " ";
-			}
-			cout << "\n";
+	sort(search_array.rbegin(), search_array.rend());
+
+	vector<int> ans_pos;
+	ll total = 0;
+	for (array<int, 2> &x : search_array) {
+		total += (ll)x[0];
+		ans_pos.push_back(x[1]);
+		if (total >= tar) {
+			break;
 		}
 	}
+
+	if (total < tar) {
+		cout << -1 << '\n';
+		return;
+	}
+
+	cout << ans_pos.size() << '\n';
+	for (int &x : ans_pos) {
+		cout << x + 1 << ' ';
+	}
+	cout << '\n';
 }
 
 int main() {

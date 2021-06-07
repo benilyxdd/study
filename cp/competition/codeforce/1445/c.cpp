@@ -3,17 +3,11 @@ using namespace std;
 
 #define ll long long
 
-const int N = 10000
-int prime[N];
-
-
 void solve() {
-	ll p, q; cin >> p >> q;
-	if (p%q != 0 || p < q) {
-		cout << p << "\n";
-	} else {
-		
-	}
+	ll p, q;
+	cin >> p >> q;
+
+	
 }
 
 int main() {

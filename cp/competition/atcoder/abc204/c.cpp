@@ -3,6 +3,16 @@ using namespace std;
 
 #define ll long long
 
+void dfs(int i, vector<bool> &ok, vector<vector<int>> &ar) {
+	if (ok[i]) {
+		return;
+	}
+	ok[i] = true;
+	for (int &route : ar[i]) {
+		dfs(route, ok, ar);
+	}
+}
+
 void solve() {
 	int n, m;
 	cin >> n >> m;
@@ -15,7 +25,16 @@ void solve() {
 	}
 
 	int ans = 0;
-	
+	for (int i = 0; i < n; i++) {
+		vector<bool> go(n, false);
+		dfs(i, go, ar);
+		for (int j = 0; j < n; j++) {
+			if (go[j]) {
+				ans++;
+			}
+		}
+	}
+	cout << ans << '\n';
 }
 
 int main() {

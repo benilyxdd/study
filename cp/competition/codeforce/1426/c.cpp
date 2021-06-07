@@ -1,13 +1,17 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define ll long long
 
 void solve() {
-	int a;
-	cin >> a;
+	int n;
+	cin >> n;
 
+	int ans = 1e9 + 7;
+	for (int i = 1; i * i <= n; i++) {
+		ans = min(ans, i - 1 + (n + i - 1) / i);
+	}
+	cout << --ans << '\n';
 }
 
 int main() {

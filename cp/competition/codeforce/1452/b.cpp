@@ -5,32 +5,21 @@ using namespace std;
 #define int ll
 
 void solve() {
-	int n, ans = 0;
+	int n;
 	cin >> n;
-	vector<int> a(n);
-	for (int i = 0; i < n; i++) 
-		cin >> a[i];
-	for (int i = 0; i < n; i++) {
-		vector<int> temp(a.begin(), a.end());
-		temp.erase(temp.begin()+i);
-		set<int> xd(temp.begin(), temp.end());
-		int mx = *max_element(temp.begin(), temp.end());
-		int x = a[i];
-		for (int& xd : temp) {
-			x -= (mx-xd);
-		}
-		if (x < 0) {
-			ans = max(ans, abs(x));
-		} else {
-			for (int j = 0; j < 200000; j++) {
-				if ((x+j)%(n-1) == 0) {
-					ans = max(ans, x+j);
-					break;
-				}
-			}
-		}
+	vector<int> ar(n);
+	for (int &x : ar) {
+		cin >> x;
 	}
-	cout << ans << "\n";
+
+	int mx = 0, sum = 0;
+	for (int &x : ar) {
+		mx = max(mx, x);
+		sum += x;
+	}
+	n--;
+	int k = max(mx, (sum + n - 1) / n);
+	cout << n * k - sum << '\n';
 }
 
 signed main() {

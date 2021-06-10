@@ -1,5 +1,17 @@
 //https://leetcode.com/problems/jump-game/
 
+// O(n) - keep updating farthest jump possible
+class Solution {
+public:
+    bool canJump(vector<int>& nums) {
+        int i = 0, n = nums.size();
+        for (int j = 0; i < n && i <= j; i++) {
+            j = max(i + nums[i], j);
+        }
+        return (i == n);
+    }
+};
+
 // O(n * m) - n -> length of vector, m -> max jump - just iteration
 class Solution {
 public:

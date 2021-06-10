@@ -1,6 +1,26 @@
 //https://leetcode.com/problems/my-calendar-i/
 
-// O(n) - a very dumb answer idk
+// O(n ^ 2) - a smarter answer
+class MyCalendar {
+public:
+    vector<array<int, 2>> vec;
+    MyCalendar() {
+        
+    }
+    
+    bool book(int start, int end) {
+        for (array<int, 2> &ar : vec) {
+            if (ar[0] < end && ar[1] > start) {
+                return false;
+            }
+        }
+        
+        vec.push_back({start, end});
+        return true;
+    }
+};
+
+// O(n ^ 2) - a very dumb answer idk
 class MyCalendar {
 public:
     vector<array<int, 2>> vec;

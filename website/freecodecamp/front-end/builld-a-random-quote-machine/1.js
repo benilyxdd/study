@@ -16,8 +16,6 @@ const getRandomNumber = (max) => {
     return parseInt(Math.floor(Math.random() * max));
 }
 
-const tweetQuote = () => {};
-
 const getQuote = () => {
     request().then(val => {
         const quote = val.quotes[getRandomNumber(102)];
@@ -26,5 +24,17 @@ const getQuote = () => {
     });
 };
 
-tweetQuoteBtn.addEventListener("click", tweetQuote);
 newQuoteBtn.addEventListener("click", getQuote);
+
+const current_quote = document.getElementById('text').textContent;
+const current_author = document.getElementById('author').textContent;
+tweetQuoteBtn.href =
+	"https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=" +
+	encodeURIComponent('" ' + current_quote + '" ' + current_author);
+
+// const tweetQuote = () => {
+    // window.open(
+        // // 'https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('" ' + current_quote + '" ' + current_author)
+	// );
+// };
+// tweetQuoteBtn.addEventListener("click", tweetQuote);

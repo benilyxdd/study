@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html>
+	<link
+		rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+	/>
 	<link href="1.css" rel="stylesheet" type="text/css" />
 	<head>
 		<title>Random Quote Machine</title>
@@ -10,8 +14,15 @@
 			<h1 id="text">Press New Quote to Start</h1>
 			<h2 id="author"></h2>
 			<div id="buttons">
-				<button class="button" id="tweet-quote">Tweet</button>
-				<button class="button" id="new-quote">New Quote</button>
+				<a
+					class="button btn btn-primary"
+					id="tweet-quote"
+					target="_blank"
+					>Tweet</a
+				>
+				<button class="button btn btn-primary" id="new-quote">
+					New Quote
+				</button>
 			</div>
 			<footer class="footer">
 				by
@@ -22,5 +33,3 @@
 		</div>
 	</body>
 </html>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0/jquery-ui.min.js"></script> -->

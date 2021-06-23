@@ -4,22 +4,46 @@
 using namespace std;
 
 #define ll long long
+ll dp[20][2][2][2];
 
-ll cal(ll &x) {
-	string x_str = to_string(x);
-	int n = x_str.length();
-	ll ans = 0;
-	for (int i = 1; i < n; i++) {
-		ans += pow(5, i);
+ll cal(string &st, int n, bool even, bool leading, bool tight) {
+	if (n == 0)
+		return 1;
+
+	if (dp[n][even][leading][tight] != -1) {
+		return dp[n][even][leading][tight];
 	}
-	return ans;
+
+	ll ans = 0;
+	int ub = (tight ? st[st.length() - n] - '0' : 9);
+	if (leading) {
+		ans += (ll)cal(st, n - 1, 0, 1, 0);
+	}
+
+	for (int i = 0; i < 10; i++) {
+		if (i <= ub && i % 2 == (!even)) {
+			ans += (ll)cal(st, n - 1, (!even), 0, (tight & (i == ub)));
+		}
+	}
+	return dp[n][even][leading][tight] = ans;
 }
 
 void solve() {
 	ll a, b;
 	cin >> a >> b;
 	a--;
-	cout << cal(b) - cal(a) << '\n';
+
+	
+	string a_str = to_string(a);
+	string b_str = to_string(b);
+	int n = a_str.length();
+	int m = b_str.length();
+
+	memset(dp, -1, sizeof(dp));
+	ll x = cal(b_str, m, 0, 1, 1);
+	memset(dp, -1, sizeof(dp));
+	ll y = cal(a_str, n, 0, 1, 1);
+	cout << (ll)x - y << '\n';
 }
 
 signed main() {

@@ -4,38 +4,27 @@ using namespace std;
 #define ll long long
 const int MOD = (int)1e9 + 7;
 
-bool ispal(string s) {
-	int n = s.length();
-	for (int i = 0; i < n / 2; i++) {
-		if (s[i] != s[n - i - 1]) {
-			return false;
-		}
+ll modpow(ll a, ll b) {
+	ll ans = 1;
+	for (int i = 0; i < b; i++) {
+		ans = (ans * a) % MOD;
 	}
-	return true;
+	return ans;
 }
 
 void solve() {
 	int n, k;
 	string s;
 	cin >> n >> k >> s;
-	vector<int> mx(n, 100);
-	for (int i = 0; i < n; i++) {
-		mx[i] = min(mx[i], s[i] - 'a' + 1);
-		mx[n - i - 1] = min(mx[n - i - 1], s[i] - 'a' + 1);
-	}
 
-	ll ans = 1;
-	if (n == 2) {
-		ans = min(mx[0], mx[1]);
-	} else if (n == 1) {
-		cout << mx[0] - 1 << '\n';
-		return;
-	} else {
-		for (int i = 0; i < (n + 2 - 1) / 2 - 1; i++) {
-			ans = (ll)ans * (max(1, (mx[i] - 1) * k + mx[i + 1] * (mx[i] - 1 > 0))) % MOD;;
-		}
+	int n_half = (n + 2 - 1) / 2;
+	string s_half = s.substr(0, n_half);
+	ll ans = 0;
+	for (int i = n_half; i >= 1; i--) {
+		int mx = s_half[i - 1] - 'a' + 1;
+		
 	}
-	cout << ans - ispal(s) << '\n';
+	cout << ans << '\n';
 }
 
 int main() {

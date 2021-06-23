@@ -1,11 +1,25 @@
+//https://codingcompetitions.withgoogle.com/kickstart/round/000000000019ff49/000000000043b0c6
+
 #include <bits/stdc++.h>
 using namespace std;
 
 #define ll long long
 
+ll cal(ll &x) {
+	string x_str = to_string(x);
+	int n = x_str.length();
+	ll ans = 0;
+	for (int i = 1; i < n; i++) {
+		ans += pow(5, i);
+	}
+	return ans;
+}
+
 void solve() {
 	ll a, b;
 	cin >> a >> b;
+	a--;
+	cout << cal(b) - cal(a) << '\n';
 }
 
 signed main() {

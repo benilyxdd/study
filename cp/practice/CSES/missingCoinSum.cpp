@@ -12,7 +12,11 @@ void solve() {
 	}
 
 	sort(ar.begin(), ar.end());
-
+	ll ans = 1;
+	for (int i = 0; i < n && ar[i] <= ans; i++) {
+		ans += (ll)ar[i];
+	}
+	cout << ans << '\n';
 }
 
 int main() {

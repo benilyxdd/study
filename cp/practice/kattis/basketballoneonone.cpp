@@ -4,7 +4,10 @@ using namespace std;
 #define ll long long
 
 void solve() {
-
+	string s;
+	cin >> s;
+	int n = s.length();
+	cout << s[n - 2] << '\n';
 }
 
 int main() {

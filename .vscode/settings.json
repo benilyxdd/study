@@ -9,6 +9,7 @@
         "vector": "cpp",
         "__tuple": "cpp",
         "algorithm": "cpp",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "ios": "cpp"
     }
 }

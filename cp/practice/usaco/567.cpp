@@ -4,12 +4,14 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	
+	int a, b, x, y;
+	cin >> a >> b >> x >> y;
+	cout << (b - a) + (y - x) - max(0, min(b, y) - max(a, x)) << '\n';
 }
 
 int main() {
-	freopen("buckets.in", "r", stdin);
-	freopen("buckets.out", "w", stdout);
+	freopen("paint.in", "r", stdin);
+	freopen("paint.out", "w", stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 

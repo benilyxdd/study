@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define ll long long
@@ -7,27 +6,33 @@ using namespace std;
 void solve() {
 	int n;
 	cin >> n;
-	vector<int> v(2*n);
-	for (int i = 0; i < 2*n; i++) {
-		cin >> v[i];
+	vector<int> ar(2 * n);
+	for (int &x : ar) {
+		cin >> x;
 	}
-	sort(v.begin(), v.end());
 
-	for (int i = 0; i < 2; i++) {
-		int f = abs(v[0]-v[1]);
-		int f2 = abs(v.back() - v[v.size()-2]);
-		if (f > f2) {
-			v.erase(v.begin());
-		} else {
-			v.pop_back();
+	sort(ar.begin(), ar.end());
+
+	int mn = 1e6;
+	for (int i = 0; i < 2 * n; i++) {
+		for (int j = i + 1; j < 2 * n; j++) {
+			int cnt = 0, f, s;
+			for (int k = 0, p = 0; k < 2 * n; k++) {
+				if (i == k || j == k) {
+					continue;
+				}
+				if (p & 1) {
+					s = ar[k];
+					cnt += abs(f - s);
+				} else {
+					f = ar[k];
+				}
+				p++;
+			}
+			mn = min(mn, cnt);
 		}
 	}
-	
-	ll ans = 0;
-	for (int i = 0; i < v.size(); i+=2) {
-		ans += v[i+1] - v[i];
-	}
-	cout << ans << "\n";
+	cout << mn << '\n';
 }
 
 int main() {

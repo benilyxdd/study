@@ -11,35 +11,36 @@ void solve() {
 		cin >> x;
 	}
 
-	for (int i = 0; i < n; i++) {
-		int cnt = 0;
-		for (int j = 1; j <= ar[i]; j++) {
-			cnt += j;
-			if (cnt >= k) {
-				cout << j << '\n';
+	auto fun = [&k](int hey) {
+		vector<int> dist(2, 0);
+		int time = 0;
+		for (int j = 1;; j++) {
+			dist[0] += j;
+			time++;
+			if (dist[0] + dist[1] >= k) {
+				cout << time << '\n';
 				return;
 			}
+			
+			if (j >= hey) {
+				dist[1] += j;
+				time++;
+				if (dist[0] + dist[1] >= k) {
+					cout << time << '\n';
+					return;
+				}
+			}
 		}
+	};
 
-		int last = -1, last_time = -1;
-		for (int j = ar[i] + 1;; j++) {
-			ll total = 0;
-			total += (ll)(1 + j) * j / 2;
-			total += (ll)(ar[i] + j) * (j - ar[i]) / 2;
-			if (total > k) {
-				cout << last_time << '\n';
-				return;
-			} else {
-				last = total;
-				last_time = j + j - ar[i];
-			}
-		}
+	for (int i = 0; i < n; i++) {
+		fun(ar[i]);
 	}
 }
 
 int main() {
-	// freopen("race.in", "r", stdin);
-	// freopen("race.out", "w", stdout);
+	freopen("race.in", "r", stdin);
+	freopen("race.out", "w", stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 

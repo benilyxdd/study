@@ -1,12 +1,11 @@
 function largestPrimeFactor(number) {
-	const se = new Set();
+	const ls = [];
 	for (let i = 2; i * i <= number; i++) {
 		if (number % i === 0) {
-			se.add(i);
-			se.add(number / i);
+			ls.push(i);
+			ls.push(number / i);
 		}
 	}
-	const ls = [...se];
 	ls.sort((a, b) => b - a);
 	for (let ele of ls) {
 		let ok = true;

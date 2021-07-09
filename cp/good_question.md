@@ -8,3 +8,6 @@
 * [CSES - Missing Coin Sum](https://cses.fi/problemset/task/2183)
     1. [Solution in O(n) time](https://www.geeksforgeeks.org/find-smallest-value-represented-sum-subset-given-array/)
 
+## prefix sum
+* [USACO - Haybale Stacking](http://www.usaco.org/index.php?page=viewproblem2&cpid=104)
+    1. [Solution](http://www.usaco.org/current/data/sol_stacking.html)

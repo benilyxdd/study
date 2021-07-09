@@ -23,8 +23,7 @@ void solve() {
 	for (int i = 0; i < n; i++) {
 		y += a[i];
 		x = max(x, y);
-		if (y < 0)
-			y = 0;
+		y = max(y, 0LL);
 	}
 	cout << x << "\n";
 }

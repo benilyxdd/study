@@ -4,7 +4,25 @@ using namespace std;
 #define ll long long
 
 void solve() {
+	vector<int> all = {1};
+	int x = 1;
+	for (int i = 2; i <= 10; i++) {
+		x *= i;
+		all.push_back(x);
+	}
 
+	int cnt = 0, n;
+	cin >> n;
+	while (n > 0) {
+		for (int i = 9; i >= 0; i--) {
+			if (all[i] <= n) {
+				cnt++;
+				n -= all[i];
+				break;
+			}
+		}
+	}
+	cout << cnt;
 }
 
 int main() {

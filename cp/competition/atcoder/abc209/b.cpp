@@ -4,7 +4,21 @@ using namespace std;
 #define ll long long
 
 void solve() {
-
+	int n, x;
+	cin >> n >> x;
+	vector<int> ar(n);
+	for (int &x : ar) {
+		cin >> x;
+	}
+	int cnt = 0;
+	for (int i = 0; i < n; i++) {
+		if (i & 1) {
+			cnt += ar[i] - 1;
+		} else {
+			cnt += ar[i];
+		}
+	}
+	cout << (cnt > x ? "No" : "Yes") << '\n';
 }
 
 int main() {

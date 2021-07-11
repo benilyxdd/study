@@ -4,7 +4,9 @@ using namespace std;
 #define ll long long
 
 void solve() {
-
+	int a, b;
+	cin >> a >> b;
+	cout << max(0, b - a + 1);
 }
 
 int main() {

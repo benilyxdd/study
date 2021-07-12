@@ -4,35 +4,53 @@ using namespace std;
 #define ll long long
 
 void solve() {
-	int n, c;
+	ll n, c;
 	cin >> n >> c;
 	vector<array<ll, 2>> range(n);
-	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < 2; j++) {
+	for (ll i = 0; i < n; i++) {
+		for (ll j = 0; j < 2; j++) {
 			cin >> range[i][j];
 		}
 	}
 
-	map<ll, int> mp;
-	for (int i = 0; i < n; i++) {
-		mp[range[i][0]]++;
+	map<ll, ll> mp;
+	for (ll i = 0; i < n; i++) {
+		mp[++range[i][0]]++;
 		mp[range[i][1]]--;
 	}
-	priority_queue<array<ll, 2>> pq;
-	for (pair<const ll, int> &p : mp) {
-		pq.push({p.second, p.first});
+
+	map<ll, ll, greater<ll>> ans;
+	ll prev = (*mp.begin()).first;
+	ll j = (*mp.begin()).second;
+	for (pair<const ll, ll> &p : mp) {
+		if (p == (*mp.begin())) {
+			continue;
+		}
+		ll now = p.first;
+		ans[j] += (now - prev);
+
+		prev = now;
+		j += p.second;
 	}
 
-	
+	ll res = n;
+	auto it = ans.begin();
+	while (c > 0 && it != ans.end()) {
+		ll mx = min(c, (*it).second);
+		c -= mx;
+		res += mx * (*it).first;
+		it++;
+	}
+	cout << res << '\n';
 }
 
-int main() {
-	freopen("input2.txt", "r", stdin);
-	freopen("output2.txt", "w", stdout);
+signed main() {
+	// freopen("input2.txt", "r", stdin);
+	// freopen("output2.txt", "w", stdout);
 	ios::sync_with_stdio(0);
 	cin.tie(0);
 
-	int t = 1, i = 1;
+	ll t = 1, i = 1;
 	cin >> t;
 	while(t--) {
 		cout << "Case #" << i << ": ";

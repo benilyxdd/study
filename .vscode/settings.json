@@ -11,6 +11,8 @@
         "algorithm": "cpp",
         "cstring": "cpp",
         "ios": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "utility": "cpp",
+        "map": "cpp"
     }
 }

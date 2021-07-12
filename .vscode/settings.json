@@ -13,6 +13,7 @@
         "ios": "cpp",
         "iosfwd": "cpp",
         "utility": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "set": "cpp"
     }
 }

@@ -1,1 +1,2 @@
-Case #1: Case #2: 
+Case #1: 24 
+Case #2: 42 

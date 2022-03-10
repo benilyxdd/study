@@ -23,6 +23,24 @@ public:
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
+        map<int, int> mp;
+        int n = nums.size();
+        for (int i = 0; i < n; i++) {
+            int cur = nums[i];
+            int find = target - cur;
+            if (mp.find(find) != mp.end()) {
+                return {mp[find], i};
+            }
+            mp[cur] = i;
+        }
+        return {-1, -1};
+    }
+};
+
+// O(n) - using map (old)
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
         map<int, int> m;
         int n = nums.size();
         for (int i = 0; i < n; i++) {

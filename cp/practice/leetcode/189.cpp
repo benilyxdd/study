@@ -1,5 +1,23 @@
 //https://leetcode.com/problems/rotate-array/
 
+// O(n) - idk man
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+        int t = k % n;
+        
+        int st = n - t;
+        int en = n + t;
+        vector<int> ans;
+        for (int i = 0; i < n; i++, st++) {
+            st %= n;
+            ans.push_back(nums[st]);
+        }
+        nums = ans;
+    }
+};
+
 // O(n) - insert & delete
 class Solution {
 public:

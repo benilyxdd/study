@@ -1,6 +1,28 @@
 //https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/
 
-// o(n) - two pointer
+// O(n) - two pointers 
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& numbers, int target) {
+        int n = numbers.size();
+        int lo = 0, hi = n - 1;
+        
+        while (lo < hi) {
+            int sum = numbers[lo] + numbers[hi];
+            if (sum > target) {
+                hi--;
+            } else if (sum < target) {
+                lo++;
+            } else {
+                break;
+            }
+        }
+        
+        return {lo + 1, hi + 1};
+    }
+};
+
+// O(n) - two pointer (old)
 class Solution {
 public:
     vector<int> twoSum(vector<int>& numbers, int target) {

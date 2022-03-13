@@ -7,13 +7,13 @@ public:
         int mx = 0;
         int last = INT_MAX;
         
-        for (int& price : prices) {
-            if (price < last) {
+        for (int &price : prices) {
+            if (last > price) {
                 last = price;
-            } else {
-                mx = max(mx, price - last);
-            }
+            } 
+            mx = max(mx, price - last);
         }
+        
         return mx;
     }
 };

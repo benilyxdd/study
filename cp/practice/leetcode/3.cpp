@@ -1,6 +1,23 @@
 //https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
-// O(n) - sliding window
+// O(n) - sliding window (upgrade)
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int mx = 0, n = s.size(), start = -1;
+        vector<int> cnt(128, -1);
+        for (int i = 0; i < n; i++) {
+            if (cnt[s[i]] > start) {
+                start = cnt[s[i]];
+            }
+            cnt[s[i]] = i;
+            mx = max(mx, i - start);
+        }
+        return mx;
+    }
+};
+
+// O(n * 128) - sliding window
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {

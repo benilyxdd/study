@@ -28,6 +28,8 @@ public:
         };
         
         // three cases - without the middle one work as well (maybe)
+        // cal(0, n - 2) -> ignore last element 
+        // cal(1, n - 1) -> ignore first element
         int mx = max({cal(0, n - 2), cal(1, n - 2), cal(1, n - 1)});
         return mx;
     }

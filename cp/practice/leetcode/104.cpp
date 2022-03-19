@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/maximum-depth-of-binary-tree/
 
-// O(v) - iterate
+// O(v) - iterateclass Solution {
 class Solution {
  public:
   int maxDepth(TreeNode* root) {
@@ -8,17 +8,17 @@ class Solution {
     if (!root) {
       return mx;
     }
-    queue<pair<TreeNode*, int>> q;
-    q.push({root, 0});
-    while (!q.empty()) {
-      auto [top, level] = q.front();
+    stack<pair<TreeNode*, int>> st;
+    st.push({root, 0});
+    while (!st.empty()) {
+      auto [top, level] = st.top();
       mx = max(mx, level);
-      q.pop();
+      st.pop();
       if (top->left) {
-        q.push({top->left, level + 1});
+        st.push({top->left, level + 1});
       }
       if (top->right) {
-        q.push({top->right, level + 1});
+        st.push({top->right, level + 1});
       }
     }
 

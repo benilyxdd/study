@@ -1,12 +1,11 @@
-//https://leetcode.com/problems/single-number/
+// https://leetcode.com/problems/single-number/
 
-// O(n) - bit
+// O(n) - xor
 class Solution {
-public:
-    int singleNumber(vector<int>& nums) {
-        int ans = nums[0];
-        for (int i = 1; i < nums.size(); i++)
-            ans ^= nums[i];
-        return ans;
-    }
+ public:
+  int singleNumber(vector<int>& nums) {
+    int ans = nums[0];
+    for (int i = 1; i < nums.size(); i++) ans ^= nums[i];
+    return ans;
+  }
 };

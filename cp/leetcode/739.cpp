@@ -6,16 +6,16 @@ public:
     vector<int> dailyTemperatures(vector<int>& x) {
         int n = x.size();
         vector<int> ans(n, 0);
-        stack<pair<int, int>> st;
-        st.push({x[0], 0});
+        stack<int> st;
+        st.push(0);
         
         for (int i = 1; i < n; i++) {
-            while (!st.empty() && x[i] > st.top().first) {
-                pair<int, int> pr = st.top();
+            while (!st.empty() && x[i] > x[st.top()]) {
+                int top = st.top();
                 st.pop();
-                ans[pr.second] = i - pr.second;
+                ans[top] = i - top;
             }
-            st.push({x[i], i});
+            st.push(i);
         }
         
         return ans;

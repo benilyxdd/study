@@ -1,4 +1,4 @@
-c// https://leetcode.com/problems/largest-rectangle-in-histogram/
+// https://leetcode.com/problems/largest-rectangle-in-histogram/
 
 // O(n) - stack 
 class Solution {

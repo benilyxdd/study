@@ -2,6 +2,3 @@
 *.cpp~
 *.cpp.un~
 *.cpp.swp
-
-*
-!*.*

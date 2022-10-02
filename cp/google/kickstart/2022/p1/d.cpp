@@ -3,23 +3,51 @@ using namespace std;
 
 #define ll long long
 
-void solve() {}
+const string IMPOSSIBLE = "Impossible";
+const string RED_WIN = "Red wins";
+const string BLUE_WIN = "Blue wins";
+const string NOBODY_WIN = "Nobody wins";
 
-int main() {
-  ios::sync_with_stdio(0);
-  cin.tie(0);
+void solve() {
+	int n, blue_count = 0, red_count = 0;
+	cin >> n;
+	vector<vector<char>> board(n, vector<char>(n));
+	
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			cin >> board[i][j];
+			blue_count += (board[i][j] == 'B');
+			red_count += (board[i][j] == 'R');
+		}
+	}
 
-  int t = 1, i = 1;
-  cin >> t;
-  while (t--) {
-    cout << "Case #" << i << ": ";
-    solve();
-    i++;
-  }
-  return 0;
+	if (abs(blue_count - red_count) > 1) {
+		cout << IMPOSSIBLE << '\n';
+		return;
+	}
+
+	vector<vector<bool>> visited(n, vector<bool>(n, false));
+	bool red_win = false, blue_win = false;
+	
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+			dfs(i, j, visited, red_win, blue_win);
+		}
+	}
 }
 
-// impossible cases:
-// 1. abs(red stone - blue stone) < 2
-// 2. more than 1 winning path
-// 3. ?
+
+int main() {
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int t = 1, i = 1;
+	cin >> t;
+	while (t--) {
+		cout << "Case #" << i << ": ";
+		solve();
+		i++;
+	}
+	return 0;
+}
+

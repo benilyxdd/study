@@ -1,5 +1,26 @@
 // https://leetcode.com/problems/longest-consecutive-sequence/
 
+// O(n) - unordered_set
+class Solution {
+ public:
+  int longestConsecutive(vector<int>& nums) {
+    unordered_set<int> us(nums.begin(), nums.end());
+
+    int mx = 0;
+    int n = nums.size();
+    for (auto& num : us) {
+      if (us.find(num - 1) == us.end()) {
+        int len = 0;
+        while (us.find(len + num) != us.end()) {
+          len++;
+        }
+        mx = max(mx, len);
+      }
+    }
+    return mx;
+  }
+};
+
 // O(n log n) - priority_queue
 class Solution {
  public:

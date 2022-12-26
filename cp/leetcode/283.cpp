@@ -30,7 +30,7 @@ public:
     }
 };
 
-// O(n log n) - stable_sort
+// O(n log ^ 2(n)) without extra memory, O(n log n) with additional memery - stable_sort
 class Solution {
 public:
     void moveZeroes(vector<int>& nums) {
